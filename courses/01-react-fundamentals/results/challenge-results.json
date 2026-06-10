@@ -469,7 +469,7 @@
   {
     "challengeId": "02-dynamic-task-rendering",
     "challengeName": "Dynamic Task Rendering",
-    "timestamp": "2026-06-10T05:03:19.586Z",
+    "timestamp": "2026-06-10T10:38:27.494Z",
     "scores": {
       "functionalTests": 75,
       "codeQuality": 100,
@@ -499,7 +499,7 @@
               "fullName": " Challenge 02: Dynamic Task Rendering should render tasks from tasks prop",
               "status": "passed",
               "title": "should render tasks from tasks prop",
-              "duration": 82,
+              "duration": 61,
               "failureMessages": []
             },
             {
@@ -510,7 +510,7 @@
               "fullName": " Challenge 02: Dynamic Task Rendering should display task count with id task-count",
               "status": "failed",
               "title": "should display task count with id task-count",
-              "duration": 31,
+              "duration": 22,
               "failureMessages": [
                 "Unable to find an element with the text: 5 Tasks. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<section\u001b[39m\n      \u001b[33mid\u001b[39m=\u001b[32m\"task-list\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2>\u001b[39m\n          \u001b[0mA\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mD1\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mHigh\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2>\u001b[39m\n          \u001b[0mB\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mD2\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mMedium\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2>\u001b[39m\n          \u001b[0mC\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mD3\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mLow\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2>\u001b[39m\n          \u001b[0mD\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mD4\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mHigh\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2>\u001b[39m\n          \u001b[0mE\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mD5\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mMedium\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n    \u001b[36m</section>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m"
               ],
@@ -527,7 +527,7 @@
               "fullName": " Challenge 02: Dynamic Task Rendering should use unique keys when mapping (no duplicate keys)",
               "status": "passed",
               "title": "should use unique keys when mapping (no duplicate keys)",
-              "duration": 9,
+              "duration": 7,
               "failureMessages": []
             },
             {
@@ -542,8 +542,8 @@
               "failureMessages": []
             }
           ],
-          "startTime": 1781067804928,
-          "endTime": 1781067805050,
+          "startTime": 1781087911294,
+          "endTime": 1781087911384,
           "status": "failed",
           "message": "",
           "name": "D:/React-Frontend/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-02.test.tsx"
@@ -709,12 +709,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 867,
+                          "duration": 715,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-10T05:03:35.972Z",
+                          "startTime": "2026-06-10T10:38:41.415Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -743,12 +743,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 279,
+                          "duration": 251,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-10T05:03:39.096Z",
+                          "startTime": "2026-06-10T10:38:44.053Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -777,12 +777,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 268,
+                          "duration": 254,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-10T05:03:39.393Z",
+                          "startTime": "2026-06-10T10:38:44.320Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -811,12 +811,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 265,
+                          "duration": 268,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-10T05:03:39.681Z",
+                          "startTime": "2026-06-10T10:38:44.597Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -845,12 +845,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 247,
+                          "duration": 256,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-10T05:03:39.959Z",
+                          "startTime": "2026-06-10T10:38:44.879Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -872,7 +872,7 @@
     },
     "aiReviewResults": {
       "challengeId": "02-dynamic-task-rendering",
-      "timestamp": "2026-06-10T05:03:40.762Z",
+      "timestamp": "2026-06-10T10:38:45.688Z",
       "score": 88,
       "feedback": [],
       "strengths": [
@@ -881,17 +881,17 @@
         "The code is relatively free of errors and warnings."
       ],
       "improvements": [
-        "Some of the variable names could be more descriptive, such as `list` in `TaskList.tsx`.",
-        "The `HARDCODED_TASKS` array in `TaskList.tsx` could be replaced with a more robust solution, such as loading tasks from a database or API.",
-        "The `TaskCard` component could benefit from a more robust key generation strategy, such as using a UUID library."
+        "Some variable names could be more descriptive, such as `list` in `TaskList.tsx`.",
+        "Consider adding more comments to explain the purpose of each component and how they interact with each other.",
+        "In `TaskList.tsx`, the `onToggle` prop is not used anywhere, it might be removed to avoid confusion."
       ],
       "readability": 85,
       "maintainability": 90,
-      "overall": "The code is well-structured and follows good practices, but could benefit from some improvements to make it more robust and maintainable."
+      "overall": "The code is well-organized and follows good practices, but there are some minor improvements that can be made to make it even more readable and maintainable."
     },
     "aiResults": {
       "challengeId": "02-dynamic-task-rendering",
-      "timestamp": "2026-06-10T05:03:40.762Z",
+      "timestamp": "2026-06-10T10:38:45.688Z",
       "score": 88,
       "feedback": [],
       "strengths": [
@@ -900,13 +900,13 @@
         "The code is relatively free of errors and warnings."
       ],
       "improvements": [
-        "Some of the variable names could be more descriptive, such as `list` in `TaskList.tsx`.",
-        "The `HARDCODED_TASKS` array in `TaskList.tsx` could be replaced with a more robust solution, such as loading tasks from a database or API.",
-        "The `TaskCard` component could benefit from a more robust key generation strategy, such as using a UUID library."
+        "Some variable names could be more descriptive, such as `list` in `TaskList.tsx`.",
+        "Consider adding more comments to explain the purpose of each component and how they interact with each other.",
+        "In `TaskList.tsx`, the `onToggle` prop is not used anywhere, it might be removed to avoid confusion."
       ],
       "readability": 85,
       "maintainability": 90,
-      "overall": "The code is well-structured and follows good practices, but could benefit from some improvements to make it more robust and maintainable."
+      "overall": "The code is well-organized and follows good practices, but there are some minor improvements that can be made to make it even more readable and maintainable."
     }
   }
 ]
