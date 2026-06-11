@@ -908,5 +908,272 @@
       "maintainability": 90,
       "overall": "The code is well-organized and follows good practices, but there are some minor improvements that can be made to make it even more readable and maintainable."
     }
+  },
+  {
+    "challengeId": "03-adding-new-tasks",
+    "challengeName": "Adding New Tasks",
+    "timestamp": "2026-06-11T10:12:25.807Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 0,
+      "aiReview": 88
+    },
+    "totalScore": 83.2,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 6,
+      "passedTests": 6,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 03: Adding New Tasks"
+              ],
+              "fullName": " Challenge 03: Adding New Tasks should have controlled title input",
+              "status": "passed",
+              "title": "should have controlled title input",
+              "duration": 298,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 03: Adding New Tasks"
+              ],
+              "fullName": " Challenge 03: Adding New Tasks should have Add Task submit button",
+              "status": "passed",
+              "title": "should have Add Task submit button",
+              "duration": 50,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 03: Adding New Tasks"
+              ],
+              "fullName": " Challenge 03: Adding New Tasks should call onAddTask with new task when title filled and submitted",
+              "status": "passed",
+              "title": "should call onAddTask with new task when title filled and submitted",
+              "duration": 187,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 03: Adding New Tasks"
+              ],
+              "fullName": " Challenge 03: Adding New Tasks should show error when title is empty on submit",
+              "status": "passed",
+              "title": "should show error when title is empty on submit",
+              "duration": 57,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 03: Adding New Tasks"
+              ],
+              "fullName": " Challenge 03: Adding New Tasks should clear form after successful add",
+              "status": "passed",
+              "title": "should clear form after successful add",
+              "duration": 170,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 03: Adding New Tasks"
+              ],
+              "fullName": " Challenge 03: Adding New Tasks should use controlled inputs (value + onChange)",
+              "status": "passed",
+              "title": "should use controlled inputs (value + onChange)",
+              "duration": 0,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1781172750674,
+          "endTime": 1781172751437,
+          "status": "passed",
+          "message": "",
+          "name": "D:/React-Frontend/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-03.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\App.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\components\\TaskForm.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\components\\TaskList.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "props",
+        "useState",
+        "controlledComponents"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/components/TaskForm.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props",
+            "useState",
+            "controlledComponents"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/components/TaskList.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "props"
+          ],
+          "patternsMissing": [
+            "useState",
+            "controlledComponents"
+          ]
+        },
+        {
+          "file": "src/App.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "useState"
+          ],
+          "patternsMissing": [
+            "props",
+            "controlledComponents"
+          ]
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 0,
+      "passed": false,
+      "error": "spawnSync C:\\WINDOWS\\system32\\cmd.exe ETIMEDOUT",
+      "details": [],
+      "note": "E2E failed. The app is started automatically by Playwright (webServer in playwright.config)."
+    },
+    "aiReviewResults": {
+      "challengeId": "03-adding-new-tasks",
+      "timestamp": "2026-06-11T10:16:36.142Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear and concise variable names and function signatures.",
+        "The use of TypeScript and functional components is a good practice, making the code more maintainable and efficient.",
+        "The code includes proper error handling and validation, ensuring that the application behaves as expected in different scenarios."
+      ],
+      "improvements": [
+        "Some of the variable names could be more descriptive, especially in the `TaskForm` component. For example, `title` and `description` could be renamed to `taskTitle` and `taskDescription` to better reflect their purpose.",
+        "The `handleSubmit` function in the `TaskForm` component could be split into smaller functions, each responsible for a specific task (e.g., validating the form, adding the task, and clearing the form). This would make the code more modular and easier to maintain.",
+        "The `TaskList` component could benefit from a more robust data fetching mechanism, such as using a library like `react-query` to handle data fetching and caching."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The provided code is well-structured and follows good practices, making it maintainable and efficient. However, there are some areas for improvement, such as more descriptive variable names and a more modular `handleSubmit` function. With these improvements, the code would be even more robust and scalable."
+    },
+    "aiResults": {
+      "challengeId": "03-adding-new-tasks",
+      "timestamp": "2026-06-11T10:16:36.142Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear and concise variable names and function signatures.",
+        "The use of TypeScript and functional components is a good practice, making the code more maintainable and efficient.",
+        "The code includes proper error handling and validation, ensuring that the application behaves as expected in different scenarios."
+      ],
+      "improvements": [
+        "Some of the variable names could be more descriptive, especially in the `TaskForm` component. For example, `title` and `description` could be renamed to `taskTitle` and `taskDescription` to better reflect their purpose.",
+        "The `handleSubmit` function in the `TaskForm` component could be split into smaller functions, each responsible for a specific task (e.g., validating the form, adding the task, and clearing the form). This would make the code more modular and easier to maintain.",
+        "The `TaskList` component could benefit from a more robust data fetching mechanism, such as using a library like `react-query` to handle data fetching and caching."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The provided code is well-structured and follows good practices, making it maintainable and efficient. However, there are some areas for improvement, such as more descriptive variable names and a more modular `handleSubmit` function. With these improvements, the code would be even more robust and scalable."
+    }
   }
 ]
