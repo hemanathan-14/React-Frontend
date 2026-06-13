@@ -1179,17 +1179,17 @@
   {
     "challengeId": "04-task-completion-toggle",
     "challengeName": "Task Completion Toggle",
-    "timestamp": "2026-06-13T10:22:11.119Z",
+    "timestamp": "2026-06-13T10:40:13.718Z",
     "scores": {
       "functionalTests": 66.7,
       "codeQuality": 100,
       "architecture": 100,
       "bestPractices": 100,
-      "e2eTests": 50,
-      "aiReview": 88
+      "e2eTests": 100,
+      "aiReview": 50
     },
-    "totalScore": 79.045,
-    "passed": false,
+    "totalScore": 80.845,
+    "passed": true,
     "errors": [],
     "warnings": [],
     "testResults": {
@@ -1209,7 +1209,7 @@
               "fullName": " Challenge 04: Task Completion Toggle TaskCard should render checkbox when onToggle provided",
               "status": "passed",
               "title": "TaskCard should render checkbox when onToggle provided",
-              "duration": 112,
+              "duration": 85,
               "failureMessages": []
             },
             {
@@ -1220,7 +1220,7 @@
               "fullName": " Challenge 04: Task Completion Toggle TaskCard should call onToggle when checkbox clicked",
               "status": "passed",
               "title": "TaskCard should call onToggle when checkbox clicked",
-              "duration": 77,
+              "duration": 73,
               "failureMessages": []
             },
             {
@@ -1231,7 +1231,7 @@
               "fullName": " Challenge 04: Task Completion Toggle TaskCard should show strike-through when completed",
               "status": "passed",
               "title": "TaskCard should show strike-through when completed",
-              "duration": 37,
+              "duration": 23,
               "failureMessages": []
             },
             {
@@ -1242,7 +1242,7 @@
               "fullName": " Challenge 04: Task Completion Toggle TaskCard should have data-completed or different style when completed",
               "status": "passed",
               "title": "TaskCard should have data-completed or different style when completed",
-              "duration": 3,
+              "duration": 2,
               "failureMessages": []
             },
             {
@@ -1253,9 +1253,9 @@
               "fullName": " Challenge 04: Task Completion Toggle TaskList should pass onToggle to TaskCard when tasks provided",
               "status": "failed",
               "title": "TaskList should pass onToggle to TaskCard when tasks provided",
-              "duration": 87,
+              "duration": 44,
               "failureMessages": [
-                "Unable to find an accessible element with the role \"checkbox\"\n\nHere are the accessible roles:\n\n  article:\n\n  Name \"\":\n  \u001b[36m<article\u001b[39m\n    \u001b[33mdata-completed\u001b[39m=\u001b[32m\"false\"\u001b[39m\n    \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n    \u001b[33mstyle\u001b[39m=\u001b[32m\"background-color: white;\"\u001b[39m\n  \u001b[36m/>\u001b[39m\n\n  Name \"\":\n  \u001b[36m<article\u001b[39m\n    \u001b[33mdata-completed\u001b[39m=\u001b[32m\"false\"\u001b[39m\n    \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n    \u001b[33mstyle\u001b[39m=\u001b[32m\"background-color: white;\"\u001b[39m\n  \u001b[36m/>\u001b[39m\n\n  --------------------------------------------------\n  heading:\n\n  Name \"Task 1\":\n  \u001b[36m<h2\u001b[39m\n    \u001b[33mstyle\u001b[39m=\u001b[32m\"text-decoration: none;\"\u001b[39m\n  \u001b[36m/>\u001b[39m\n\n  Name \"Task 2\":\n  \u001b[36m<h2\u001b[39m\n    \u001b[33mstyle\u001b[39m=\u001b[32m\"text-decoration: none;\"\u001b[39m\n  \u001b[36m/>\u001b[39m\n\n  --------------------------------------------------\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<section\u001b[39m\n      \u001b[33mid\u001b[39m=\u001b[32m\"task-list\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mdata-completed\u001b[39m=\u001b[32m\"false\"\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n        \u001b[33mstyle\u001b[39m=\u001b[32m\"background-color: white;\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"text-decoration: none;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTask 1\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"text-decoration: none;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mD1\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mHigh\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mdata-completed\u001b[39m=\u001b[32m\"false\"\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n        \u001b[33mstyle\u001b[39m=\u001b[32m\"background-color: white;\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<h2\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"text-decoration: none;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTask 2\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"text-decoration: none;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mD2\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mMedium\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n    \u001b[36m</section>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m"
+                "Unable to find an element with the text: 1 of 2 completed. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<section\u001b[39m\n      \u001b[33mid\u001b[39m=\u001b[32m\"task-list\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mdata-completed\u001b[39m=\u001b[32m\"false\"\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n        \u001b[33mstyle\u001b[39m=\u001b[32m\"background-color: white;\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<input\u001b[39m\n          \u001b[33mtype\u001b[39m=\u001b[32m\"checkbox\"\u001b[39m\n        \u001b[36m/>\u001b[39m\n        \u001b[36m<h2\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"text-decoration: none;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTask 1\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"text-decoration: none;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mD1\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mHigh\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n      \u001b[36m<article\u001b[39m\n        \u001b[33mdata-completed\u001b[39m=\u001b[32m\"true\"\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n        \u001b[33mstyle\u001b[39m=\u001b[32m\"background-color: rgb(229, 231, 235);\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[36m<input\u001b[39m\n          \u001b[33mchecked\u001b[39m=\u001b[32m\"\"\u001b[39m\n          \u001b[33mtype\u001b[39m=\u001b[32m\"checkbox\"\u001b[39m\n        \u001b[36m/>\u001b[39m\n        \u001b[36m<h2\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"text-decoration: line-through;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mTask 2\u001b[0m\n        \u001b[36m</h2>\u001b[39m\n        \u001b[36m<p\u001b[39m\n          \u001b[33mstyle\u001b[39m=\u001b[32m\"text-decoration: line-through;\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mD2\u001b[0m\n        \u001b[36m</p>\u001b[39m\n        \u001b[36m<p>\u001b[39m\n          \u001b[0mPriority: \u001b[0m\n          \u001b[0mMedium\u001b[0m\n        \u001b[36m</p>\u001b[39m\n      \u001b[36m</article>\u001b[39m\n    \u001b[36m</section>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m"
               ],
               "location": {
                 "line": 37,
@@ -1280,8 +1280,8 @@
               }
             }
           ],
-          "startTime": 1781346134188,
-          "endTime": 1781346134508,
+          "startTime": 1781347216057,
+          "endTime": 1781347216288,
           "status": "failed",
           "message": "",
           "name": "D:/React-Frontend/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-04.test.tsx"
@@ -1412,10 +1412,11 @@
       "note": "No best practices requirements specified in challenge"
     },
     "e2eResults": {
-      "score": 50,
+      "score": 100,
+      "passed": true,
       "totalTests": 4,
-      "passedTests": 2,
-      "failedTests": 2,
+      "passedTests": 4,
+      "failedTests": 0,
       "details": [
         {
           "title": "challenge-04.spec.ts",
@@ -1446,12 +1447,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 440,
+                          "duration": 305,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-13T10:22:22.955Z",
+                          "startTime": "2026-06-13T10:40:22.883Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -1466,7 +1467,7 @@
                 },
                 {
                   "title": "should have checkboxes on tasks",
-                  "ok": false,
+                  "ok": true,
                   "tags": [],
                   "tests": [
                     {
@@ -1479,154 +1480,18 @@
                         {
                           "workerIndex": 0,
                           "parallelIndex": 0,
-                          "status": "failed",
-                          "duration": 5223,
-                          "error": {
-                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n",
-                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts:16:38",
-                            "location": {
-                              "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                              "column": 38,
-                              "line": 16
-                            },
-                            "snippet": "\u001b[0m \u001b[90m 14 |\u001b[39m   test(\u001b[32m'should have checkboxes on tasks'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m     \u001b[36mconst\u001b[39m checkboxes \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'checkbox'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(checkboxes\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m\n \u001b[90m 19 |\u001b[39m   test(\u001b[32m'should toggle completion when checkbox clicked'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
-                          },
-                          "errors": [
-                            {
-                              "location": {
-                                "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                                "column": 38,
-                                "line": 16
-                              },
-                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n\n\n  14 |   test('should have checkboxes on tasks', async ({ page }) => {\n  15 |     const checkboxes = page.getByRole('checkbox');\n> 16 |     await expect(checkboxes.first()).toBeVisible();\n     |                                      ^\n  17 |   });\n  18 |\n  19 |   test('should toggle completion when checkbox clicked', async ({ page }) => {\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts:16:38"
-                            }
-                          ],
+                          "status": "passed",
+                          "duration": 199,
+                          "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-13T10:22:23.685Z",
+                          "startTime": "2026-06-13T10:40:23.402Z",
                           "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--a14f2-ld-have-checkboxes-on-tasks-chromium\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--a14f2-ld-have-checkboxes-on-tasks-chromium\\error-context.md"
-                            }
-                          ],
-                          "errorLocation": {
-                            "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                            "column": 38,
-                            "line": 16
-                          }
-                        },
-                        {
-                          "workerIndex": 1,
-                          "parallelIndex": 0,
-                          "status": "failed",
-                          "duration": 5475,
-                          "error": {
-                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n",
-                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts:16:38",
-                            "location": {
-                              "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                              "column": 38,
-                              "line": 16
-                            },
-                            "snippet": "\u001b[0m \u001b[90m 14 |\u001b[39m   test(\u001b[32m'should have checkboxes on tasks'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m     \u001b[36mconst\u001b[39m checkboxes \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'checkbox'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(checkboxes\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m\n \u001b[90m 19 |\u001b[39m   test(\u001b[32m'should toggle completion when checkbox clicked'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
-                          },
-                          "errors": [
-                            {
-                              "location": {
-                                "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                                "column": 38,
-                                "line": 16
-                              },
-                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n\n\n  14 |   test('should have checkboxes on tasks', async ({ page }) => {\n  15 |     const checkboxes = page.getByRole('checkbox');\n> 16 |     await expect(checkboxes.first()).toBeVisible();\n     |                                      ^\n  17 |   });\n  18 |\n  19 |   test('should toggle completion when checkbox clicked', async ({ page }) => {\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts:16:38"
-                            }
-                          ],
-                          "stdout": [],
-                          "stderr": [],
-                          "retry": 1,
-                          "startTime": "2026-06-13T10:22:30.547Z",
-                          "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--a14f2-ld-have-checkboxes-on-tasks-chromium-retry1\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--a14f2-ld-have-checkboxes-on-tasks-chromium-retry1\\error-context.md"
-                            },
-                            {
-                              "name": "trace",
-                              "contentType": "application/zip",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--a14f2-ld-have-checkboxes-on-tasks-chromium-retry1\\trace.zip"
-                            }
-                          ],
-                          "errorLocation": {
-                            "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                            "column": 38,
-                            "line": 16
-                          }
-                        },
-                        {
-                          "workerIndex": 2,
-                          "parallelIndex": 0,
-                          "status": "failed",
-                          "duration": 5377,
-                          "error": {
-                            "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n",
-                            "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts:16:38",
-                            "location": {
-                              "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                              "column": 38,
-                              "line": 16
-                            },
-                            "snippet": "\u001b[0m \u001b[90m 14 |\u001b[39m   test(\u001b[32m'should have checkboxes on tasks'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 15 |\u001b[39m     \u001b[36mconst\u001b[39m checkboxes \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mgetByRole(\u001b[32m'checkbox'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(checkboxes\u001b[33m.\u001b[39mfirst())\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 17 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 18 |\u001b[39m\n \u001b[90m 19 |\u001b[39m   test(\u001b[32m'should toggle completion when checkbox clicked'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
-                          },
-                          "errors": [
-                            {
-                              "location": {
-                                "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                                "column": 38,
-                                "line": 16
-                              },
-                              "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('checkbox').first()\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n\n\n  14 |   test('should have checkboxes on tasks', async ({ page }) => {\n  15 |     const checkboxes = page.getByRole('checkbox');\n> 16 |     await expect(checkboxes.first()).toBeVisible();\n     |                                      ^\n  17 |   });\n  18 |\n  19 |   test('should toggle completion when checkbox clicked', async ({ page }) => {\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts:16:38"
-                            }
-                          ],
-                          "stdout": [],
-                          "stderr": [],
-                          "retry": 2,
-                          "startTime": "2026-06-13T10:22:37.963Z",
-                          "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--a14f2-ld-have-checkboxes-on-tasks-chromium-retry2\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--a14f2-ld-have-checkboxes-on-tasks-chromium-retry2\\error-context.md"
-                            }
-                          ],
-                          "errorLocation": {
-                            "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                            "column": 38,
-                            "line": 16
-                          }
+                          "attachments": []
                         }
                       ],
-                      "status": "unexpected"
+                      "status": "expected"
                     }
                   ],
                   "id": "0401c8ab289c6ab836d0-ea4e86645a8846a56a20",
@@ -1636,7 +1501,7 @@
                 },
                 {
                   "title": "should toggle completion when checkbox clicked",
-                  "ok": false,
+                  "ok": true,
                   "tags": [],
                   "tests": [
                     {
@@ -1647,132 +1512,20 @@
                       "projectName": "chromium",
                       "results": [
                         {
-                          "workerIndex": 3,
+                          "workerIndex": 0,
                           "parallelIndex": 0,
-                          "status": "timedOut",
-                          "duration": 30086,
-                          "error": {
-                            "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
-                            "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
-                          },
-                          "errors": [
-                            {
-                              "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
-                            },
-                            {
-                              "location": {
-                                "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                                "column": 25,
-                                "line": 21
-                              },
-                              "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n\n\n  19 |   test('should toggle completion when checkbox clicked', async ({ page }) => {\n  20 |     const firstCheckbox = page.getByRole('checkbox').first();\n> 21 |     await firstCheckbox.click();\n     |                         ^\n  22 |     const countEl = page.locator('#task-count');\n  23 |     await expect(countEl).toContainText('1 of');\n  24 |   });\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts:21:25"
-                            }
-                          ],
+                          "status": "passed",
+                          "duration": 242,
+                          "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-13T10:22:45.245Z",
+                          "startTime": "2026-06-13T10:40:23.614Z",
                           "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--4372b-etion-when-checkbox-clicked-chromium\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--4372b-etion-when-checkbox-clicked-chromium\\error-context.md"
-                            }
-                          ]
-                        },
-                        {
-                          "workerIndex": 4,
-                          "parallelIndex": 0,
-                          "status": "timedOut",
-                          "duration": 30135,
-                          "error": {
-                            "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
-                            "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
-                          },
-                          "errors": [
-                            {
-                              "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
-                            },
-                            {
-                              "location": {
-                                "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                                "column": 25,
-                                "line": 21
-                              },
-                              "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n\n\n  19 |   test('should toggle completion when checkbox clicked', async ({ page }) => {\n  20 |     const firstCheckbox = page.getByRole('checkbox').first();\n> 21 |     await firstCheckbox.click();\n     |                         ^\n  22 |     const countEl = page.locator('#task-count');\n  23 |     await expect(countEl).toContainText('1 of');\n  24 |   });\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts:21:25"
-                            }
-                          ],
-                          "stdout": [],
-                          "stderr": [],
-                          "retry": 1,
-                          "startTime": "2026-06-13T10:23:17.254Z",
-                          "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--4372b-etion-when-checkbox-clicked-chromium-retry1\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--4372b-etion-when-checkbox-clicked-chromium-retry1\\error-context.md"
-                            },
-                            {
-                              "name": "trace",
-                              "contentType": "application/zip",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--4372b-etion-when-checkbox-clicked-chromium-retry1\\trace.zip"
-                            }
-                          ]
-                        },
-                        {
-                          "workerIndex": 5,
-                          "parallelIndex": 0,
-                          "status": "timedOut",
-                          "duration": 30080,
-                          "error": {
-                            "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
-                            "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
-                          },
-                          "errors": [
-                            {
-                              "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
-                            },
-                            {
-                              "location": {
-                                "file": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts",
-                                "column": 25,
-                                "line": 21
-                              },
-                              "message": "Error: locator.click: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('checkbox').first()\u001b[22m\n\n\n  19 |   test('should toggle completion when checkbox clicked', async ({ page }) => {\n  20 |     const firstCheckbox = page.getByRole('checkbox').first();\n> 21 |     await firstCheckbox.click();\n     |                         ^\n  22 |     const countEl = page.locator('#task-count');\n  23 |     await expect(countEl).toContainText('1 of');\n  24 |   });\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-04.spec.ts:21:25"
-                            }
-                          ],
-                          "stdout": [],
-                          "stderr": [],
-                          "retry": 2,
-                          "startTime": "2026-06-13T10:23:49.420Z",
-                          "annotations": [],
-                          "attachments": [
-                            {
-                              "name": "screenshot",
-                              "contentType": "image/png",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--4372b-etion-when-checkbox-clicked-chromium-retry2\\test-failed-1.png"
-                            },
-                            {
-                              "name": "error-context",
-                              "contentType": "text/markdown",
-                              "path": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\test-results\\challenge-04-Challenge-04--4372b-etion-when-checkbox-clicked-chromium-retry2\\error-context.md"
-                            }
-                          ]
+                          "attachments": []
                         }
                       ],
-                      "status": "unexpected"
+                      "status": "expected"
                     }
                   ],
                   "id": "0401c8ab289c6ab836d0-274beee5472a14342c50",
@@ -1793,15 +1546,15 @@
                       "projectName": "chromium",
                       "results": [
                         {
-                          "workerIndex": 6,
+                          "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 362,
+                          "duration": 197,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-13T10:24:21.471Z",
+                          "startTime": "2026-06-13T10:40:23.871Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -1819,46 +1572,37 @@
           ]
         }
       ],
-      "error": "Command failed: npx playwright test \"tests/e2e/challenge-04.spec.ts\" --reporter=json",
-      "passed": false
+      "screenshots": []
     },
     "aiReviewResults": {
       "challengeId": "04-task-completion-toggle",
-      "timestamp": "2026-06-13T10:24:22.624Z",
-      "score": 88,
+      "timestamp": "2026-06-13T10:40:24.472Z",
+      "score": 50,
       "feedback": [],
       "strengths": [
-        "The code is well-structured and easy to follow, with clear separation of concerns between components.",
-        "The use of TypeScript and functional components promotes maintainability and scalability.",
-        "The code adheres to best practices, such as using destructuring and default values for props."
+        "Code structure is reasonable"
       ],
       "improvements": [
-        "In the `TaskCard` component, the `onToggle` function is called with the `taskId` as an argument, but it's not clear what the function is expected to do with this argument. Consider adding a comment or documentation to clarify this.",
-        "In the `TaskList` component, the `HARDCODED_TASKS` array is used as a fallback when `tasks` is not provided. Consider using a more robust approach, such as loading tasks from a data source or using a default value that's more meaningful in the context of the application.",
-        "In the `App` component, the `handleDelete` function is defined as an arrow function, but it's not clear why it's not using the `useState` hook to update the `tasks` state directly. Consider refactoring this function to use the hook and simplify the code."
+        "Code structure is reasonable"
       ],
-      "readability": 85,
-      "maintainability": 90,
-      "overall": "The code is well-structured and maintainable, with a good balance of readability and scalability. However, there are some minor improvements that can be made to clarify the code and simplify certain functions."
+      "readability": 50,
+      "maintainability": 50,
+      "overall": "{\n  \"readability\": 85,\n  \"maintainability\": 90,\n  \"strengths\": [\n    \"The code is well-structured and easy to follow, with clear separation of concerns between components.\",\n    \"The use of TypeScript and functional components promotes maintainability and scalability.\",\n    \"The code is well-documented, with clear and concise comments explaining the purpose of each component and function.\"\n  ],\n  \"improvements\": [\n    \"The `TaskCard` component could benefit from a more robust way of handling the"
     },
     "aiResults": {
       "challengeId": "04-task-completion-toggle",
-      "timestamp": "2026-06-13T10:24:22.624Z",
-      "score": 88,
+      "timestamp": "2026-06-13T10:40:24.472Z",
+      "score": 50,
       "feedback": [],
       "strengths": [
-        "The code is well-structured and easy to follow, with clear separation of concerns between components.",
-        "The use of TypeScript and functional components promotes maintainability and scalability.",
-        "The code adheres to best practices, such as using destructuring and default values for props."
+        "Code structure is reasonable"
       ],
       "improvements": [
-        "In the `TaskCard` component, the `onToggle` function is called with the `taskId` as an argument, but it's not clear what the function is expected to do with this argument. Consider adding a comment or documentation to clarify this.",
-        "In the `TaskList` component, the `HARDCODED_TASKS` array is used as a fallback when `tasks` is not provided. Consider using a more robust approach, such as loading tasks from a data source or using a default value that's more meaningful in the context of the application.",
-        "In the `App` component, the `handleDelete` function is defined as an arrow function, but it's not clear why it's not using the `useState` hook to update the `tasks` state directly. Consider refactoring this function to use the hook and simplify the code."
+        "Code structure is reasonable"
       ],
-      "readability": 85,
-      "maintainability": 90,
-      "overall": "The code is well-structured and maintainable, with a good balance of readability and scalability. However, there are some minor improvements that can be made to clarify the code and simplify certain functions."
+      "readability": 50,
+      "maintainability": 50,
+      "overall": "{\n  \"readability\": 85,\n  \"maintainability\": 90,\n  \"strengths\": [\n    \"The code is well-structured and easy to follow, with clear separation of concerns between components.\",\n    \"The use of TypeScript and functional components promotes maintainability and scalability.\",\n    \"The code is well-documented, with clear and concise comments explaining the purpose of each component and function.\"\n  ],\n  \"improvements\": [\n    \"The `TaskCard` component could benefit from a more robust way of handling the"
     }
   }
 ]

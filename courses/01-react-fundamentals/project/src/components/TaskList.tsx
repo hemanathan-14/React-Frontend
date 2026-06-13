@@ -43,7 +43,10 @@ const HARDCODED_TASKS: Task[] = [
   },
 ]
 
-export default function TaskList({ tasks }: TaskListProps) {
+export default function TaskList({
+  tasks,
+  onToggle,
+}: TaskListProps) {
   const list = tasks ?? HARDCODED_TASKS
 
   return (
@@ -51,9 +54,12 @@ export default function TaskList({ tasks }: TaskListProps) {
       {list.map((task) => (
         <TaskCard
           key={task.id}
+          taskId={task.id}
           title={task.title}
           description={task.description}
           priority={task.priority}
+          completed={task.completed}
+          onToggle={onToggle}
         />
       ))}
     </section>
