@@ -17,14 +17,31 @@ interface TaskAppProps {
 const HARDCODED_COUNT = 3;
 
 export default function TaskApp({
-  tasks,
+  tasks =[],
+  setTasks,
 }: TaskAppProps) {
-  const count = tasks ? tasks.length : HARDCODED_COUNT;
+  const handleToggle = (id: string | number) =>{
+    if (!setTasks) return;
+
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id
+        ? { ...task,completed:!task.completed}
+        :task  
+      )
+    );
+  };
+
+  const completedCount = tasks.filter(
+    (task) => task.completed
+  ).length;
 
   return (
     <section>
-      <h2 id="task-count">{count} Tasks</h2>
-      <TaskList tasks={tasks} />
+      <h2 id="task-count">{completedCount} of {tasks.length} completed</h2>
+      <TaskList tasks={tasks} 
+      onToggle={handleToggle}
+      />
     </section>
   );
 }

@@ -1,10 +1,10 @@
 {
   "courseId": "01-react-fundamentals",
   "courseName": "React Fundamentals",
-  "lastUpdated": "2026-06-11T10:16:37.885Z",
+  "lastUpdated": "2026-06-13T10:14:59.938Z",
   "totalChallenges": 23,
   "completedChallenges": 3,
-  "averageScore": 89.8,
+  "averageScore": 87.1,
   "completionPercentage": 13,
   "badgeLevel": "none",
   "challengeResults": [
@@ -25,6 +25,12 @@
       "challengeName": "Adding New Tasks",
       "score": 83.2,
       "passed": true
+    },
+    {
+      "challengeId": "04-task-completion-toggle",
+      "challengeName": "Task Completion Toggle",
+      "score": 79.045,
+      "passed": false
     }
   ],
   "skillStrengths": [
