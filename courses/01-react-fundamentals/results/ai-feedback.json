@@ -132,5 +132,28 @@
       "maintainability": 90,
       "overall": "The code is well-written and maintainable, with a good structure and organization. However, there are some minor improvements that could be made to enhance readability and performance."
     }
+  },
+  {
+    "challengeId": "07-priority-based-sorting",
+    "challengeName": "Priority-Based Sorting",
+    "aiReview": {
+      "challengeId": "07-priority-based-sorting",
+      "timestamp": "2026-06-14T17:00:50.748Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript and functional components is a good practice.",
+        "The code is well-commented and easy to understand."
+      ],
+      "improvements": [
+        "The `priorityOrder` object can be replaced with a more concise and efficient way to map priority levels to numbers.",
+        "The `handleToggle` and `handleDelete` functions can be extracted into separate files or modules to improve maintainability.",
+        "The `TaskApp` component can be split into smaller, more focused components to improve readability and maintainability."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-written and follows good practices, but there are some areas for improvement to make it even more maintainable and efficient."
+    }
   }
 ]
