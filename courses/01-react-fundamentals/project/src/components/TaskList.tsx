@@ -46,6 +46,7 @@ const HARDCODED_TASKS: Task[] = [
 export default function TaskList({
   tasks,
   onToggle,
+  onDelete,
 }: TaskListProps) {
   const list = tasks ?? HARDCODED_TASKS
 
@@ -60,6 +61,7 @@ export default function TaskList({
           priority={task.priority}
           completed={task.completed}
           onToggle={onToggle}
+          onDelete={onDelete}
         />
       ))}
     </section>
