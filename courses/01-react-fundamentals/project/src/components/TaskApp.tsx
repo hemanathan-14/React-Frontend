@@ -1,16 +1,23 @@
+import { useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import TaskList from "./TaskList";
 import type { Task } from "./TaskList";
+import FilterBar from "./FilterBar";
 
 interface TaskAppProps {
   tasks?: Task[];
   setTasks?: Dispatch<SetStateAction<Task[]>>;
+  showFilterBar?:boolean;
 }
 
 export default function TaskApp({
   tasks = [],
   setTasks,
+  showFilterBar=false,
 }: TaskAppProps) {
+  const [filter,setFilter]=useState<
+    "all"|"active"|"completed">("all");
+
   const handleToggle = (id: string | number) => {
     if (!setTasks) return;
 
@@ -29,23 +36,40 @@ export default function TaskApp({
       prev.filter((task)=>task.id !== id)
     );
   };
+  
+  const filteredTasks = tasks.filter((task) => {
+  if (filter === "active") return !task.completed;
+  if (filter === "completed") return task.completed;
+  return true;
+});
 
-
-  const completedCount = tasks.filter(
-    (task) => task.completed
-  ).length;
 
   return (
     <section>
-      <h2 id="task-count">
-        {completedCount} of {tasks.length} completed
-      </h2>
+      {showFilterBar && (
+        <>
+          <FilterBar
+            filter={filter}
+            onFilterChange={setFilter}
+          />
 
-      <TaskList
-        tasks={tasks}
-        onToggle={handleToggle}
-        onDelete={handleDelete}
-      />
+          <h2 id="task-count">
+            Showing {filteredTasks.length} of {tasks.length} tasks
+          </h2>
+        </>
+      )}
+
+      {filteredTasks.length === 0 ? (
+        <p id="filter-empty-message">
+          No tasks match this filter
+        </p>
+      ) : (
+        <TaskList
+          tasks={filteredTasks}
+          onToggle={handleToggle}
+          onDelete={handleDelete}
+        />
+      )}
     </section>
   );
 }
