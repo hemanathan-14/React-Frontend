@@ -23,6 +23,10 @@ export default function TaskApp({
     "recent" | "highToLow" | "lowToHigh" | "alphabetical"
   >("recent");
 
+  const [editingId, setEditingId] = useState<
+    string | number | null
+  >(null);
+
   const handleToggle = (id: string | number) => {
     if (!setTasks) return;
 
@@ -43,14 +47,31 @@ export default function TaskApp({
     );
   };
 
-  // Filter first
+  const handleUpdateTask = (
+    id: string | number,
+    updates: {
+      title: string;
+      description: string;
+      priority: string;
+    }
+  ) => {
+    if (!setTasks) return;
+
+    setTasks((prev) =>
+      prev.map((task) =>
+        task.id === id
+          ? { ...task, ...updates }
+          : task
+      )
+    );
+  };
+
   const filteredTasks = tasks.filter((task) => {
     if (filter === "active") return !task.completed;
     if (filter === "completed") return task.completed;
     return true;
   });
 
-  // Sort after filtering
   const priorityOrder: Record<string, number> = {
     High: 3,
     Medium: 2,
@@ -60,15 +81,25 @@ export default function TaskApp({
   const sortedTasks = [...filteredTasks].sort((a, b) => {
     switch (sortOrder) {
       case "highToLow":
-        return priorityOrder[b.priority] - priorityOrder[a.priority];
+        return (
+          priorityOrder[b.priority] -
+          priorityOrder[a.priority]
+        );
 
       case "lowToHigh":
-        return priorityOrder[a.priority] - priorityOrder[b.priority];
+        return (
+          priorityOrder[a.priority] -
+          priorityOrder[b.priority]
+        );
 
       case "alphabetical":
-        return a.title.localeCompare(b.title, undefined, {
-          sensitivity: "base",
-        });
+        return a.title.localeCompare(
+          b.title,
+          undefined,
+          {
+            sensitivity: "base",
+          }
+        );
 
       case "recent":
       default:
@@ -102,6 +133,9 @@ export default function TaskApp({
           tasks={sortedTasks}
           onToggle={handleToggle}
           onDelete={handleDelete}
+          onUpdateTask={handleUpdateTask}
+          editingId={editingId}
+          setEditingId={setEditingId}
         />
       )}
     </section>
