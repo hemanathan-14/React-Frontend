@@ -3527,5 +3527,250 @@
       "maintainability": 90,
       "overall": "The code is well-structured and maintainable, with a good balance of readability and complexity. However, there are opportunities for improvement, particularly in terms of simplifying the `TaskApp` component and extracting the search functionality into a separate component."
     }
+  },
+  {
+    "challengeId": "10-useeffect-local-storage",
+    "challengeName": "useEffect - Local Storage Persistence",
+    "timestamp": "2026-06-15T20:34:41.247Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 88
+    },
+    "totalScore": 98.2,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 10: useEffect - Local Storage Persistence"
+              ],
+              "fullName": " Challenge 10: useEffect - Local Storage Persistence App should render without crashing",
+              "status": "passed",
+              "title": "App should render without crashing",
+              "duration": 77,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 10: useEffect - Local Storage Persistence"
+              ],
+              "fullName": " Challenge 10: useEffect - Local Storage Persistence App should have routes for challenge 10",
+              "status": "passed",
+              "title": "App should have routes for challenge 10",
+              "duration": 10,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1781555683660,
+          "endTime": 1781555683748,
+          "status": "passed",
+          "message": "",
+          "name": "D:/React-Frontend/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-10.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\App.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "useEffect"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/App.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "useEffect"
+          ],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-10.spec.ts",
+          "file": "challenge-10.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 10: useEffect Local Storage - E2E",
+              "file": "challenge-10.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display task list",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 343,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-15T20:34:50.500Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "2b6a150d93e258235d20-ba3b23b66771ff6c010c",
+                  "file": "challenge-10.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should display task count",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 202,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-15T20:34:51.103Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "2b6a150d93e258235d20-51aa29bd7f0387a1168b",
+                  "file": "challenge-10.spec.ts",
+                  "line": 12,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "10-useeffect-local-storage",
+      "timestamp": "2026-06-15T20:34:51.779Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear separation of concerns between different components.",
+        "The use of TypeScript and functional components is a good practice, making the code more maintainable and scalable.",
+        "The code is well-documented, with clear and concise comments explaining the purpose of each section."
+      ],
+      "improvements": [
+        "The `useEffect` hook for loading tasks from local storage could be improved by adding a check for the existence of the key before trying to parse the data. This would prevent the code from crashing when the key is missing.",
+        "The `handleDelete` function could be improved by adding a check to ensure that the task to be deleted exists in the `tasks` array before attempting to filter it out. This would prevent the code from crashing when trying to delete a non-existent task.",
+        "The code could benefit from the use of a more robust error handling mechanism, such as a try-catch block, to handle any potential errors that may occur when parsing or saving data to local storage."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and maintainable, with a good separation of concerns between different components. However, there are a few areas where the code could be improved to make it more robust and error-free."
+    },
+    "aiResults": {
+      "challengeId": "10-useeffect-local-storage",
+      "timestamp": "2026-06-15T20:34:51.779Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear separation of concerns between different components.",
+        "The use of TypeScript and functional components is a good practice, making the code more maintainable and scalable.",
+        "The code is well-documented, with clear and concise comments explaining the purpose of each section."
+      ],
+      "improvements": [
+        "The `useEffect` hook for loading tasks from local storage could be improved by adding a check for the existence of the key before trying to parse the data. This would prevent the code from crashing when the key is missing.",
+        "The `handleDelete` function could be improved by adding a check to ensure that the task to be deleted exists in the `tasks` array before attempting to filter it out. This would prevent the code from crashing when trying to delete a non-existent task.",
+        "The code could benefit from the use of a more robust error handling mechanism, such as a try-catch block, to handle any potential errors that may occur when parsing or saving data to local storage."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and maintainable, with a good separation of concerns between different components. However, there are a few areas where the code could be improved to make it more robust and error-free."
+    }
   }
 ]
