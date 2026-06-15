@@ -2752,7 +2752,7 @@
   {
     "challengeId": "08-task-editing",
     "challengeName": "Task Editing",
-    "timestamp": "2026-06-15T05:52:03.936Z",
+    "timestamp": "2026-06-15T07:27:57.634Z",
     "scores": {
       "functionalTests": 66.7,
       "codeQuality": 100,
@@ -2782,9 +2782,9 @@
               "fullName": " Challenge 08: Task Editing TaskCard should render title and description",
               "status": "failed",
               "title": "TaskCard should render title and description",
-              "duration": 45,
+              "duration": 47,
               "failureMessages": [
-                "Unable to find an element with the text: Original. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<article\u001b[39m\n      \u001b[33mdata-completed\u001b[39m=\u001b[32m\"false\"\u001b[39m\n      \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[33mstyle\u001b[39m=\u001b[32m\"background-color: white;\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<input\u001b[39m\n        \u001b[33mvalue\u001b[39m=\u001b[32m\"Original\"\u001b[39m\n      \u001b[36m/>\u001b[39m\n      \u001b[36m<textarea>\u001b[39m\n        \u001b[0mDesc\u001b[0m\n      \u001b[36m</textarea>\u001b[39m\n      \u001b[36m<select>\u001b[39m\n        \u001b[36m<option\u001b[39m\n          \u001b[33mvalue\u001b[39m=\u001b[32m\"High\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mHigh\u001b[0m\n        \u001b[36m</option>\u001b[39m\n        \u001b[36m<option\u001b[39m\n          \u001b[33mvalue\u001b[39m=\u001b[32m\"Medium\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mMedium\u001b[0m\n        \u001b[36m</option>\u001b[39m\n        \u001b[36m<option\u001b[39m\n          \u001b[33mvalue\u001b[39m=\u001b[32m\"Low\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mLow\u001b[0m\n        \u001b[36m</option>\u001b[39m\n      \u001b[36m</select>\u001b[39m\n      \u001b[36m<button>\u001b[39m\n        \u001b[0mSave\u001b[0m\n      \u001b[36m</button>\u001b[39m\n      \u001b[36m<button>\u001b[39m\n        \u001b[0mCancel\u001b[0m\n      \u001b[36m</button>\u001b[39m\n    \u001b[36m</article>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m"
+                "Unable to find an element with the text: Original. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<article\u001b[39m\n      \u001b[33mdata-completed\u001b[39m=\u001b[32m\"false\"\u001b[39m\n      \u001b[33mid\u001b[39m=\u001b[32m\"task-card\"\u001b[39m\n      \u001b[33mstyle\u001b[39m=\u001b[32m\"background-color: white;\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<input\u001b[39m\n        \u001b[33mtype\u001b[39m=\u001b[32m\"text\"\u001b[39m\n        \u001b[33mvalue\u001b[39m=\u001b[32m\"Original\"\u001b[39m\n      \u001b[36m/>\u001b[39m\n      \u001b[36m<textarea>\u001b[39m\n        \u001b[0mDesc\u001b[0m\n      \u001b[36m</textarea>\u001b[39m\n      \u001b[36m<select>\u001b[39m\n        \u001b[36m<option\u001b[39m\n          \u001b[33mvalue\u001b[39m=\u001b[32m\"High\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mHigh\u001b[0m\n        \u001b[36m</option>\u001b[39m\n        \u001b[36m<option\u001b[39m\n          \u001b[33mvalue\u001b[39m=\u001b[32m\"Medium\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mMedium\u001b[0m\n        \u001b[36m</option>\u001b[39m\n        \u001b[36m<option\u001b[39m\n          \u001b[33mvalue\u001b[39m=\u001b[32m\"Low\"\u001b[39m\n        \u001b[36m>\u001b[39m\n          \u001b[0mLow\u001b[0m\n        \u001b[36m</option>\u001b[39m\n      \u001b[36m</select>\u001b[39m\n      \u001b[36m<button>\u001b[39m\n        \u001b[0mSave\u001b[0m\n      \u001b[36m</button>\u001b[39m\n      \u001b[36m<button>\u001b[39m\n        \u001b[0mCancel\u001b[0m\n      \u001b[36m</button>\u001b[39m\n    \u001b[36m</article>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m"
               ],
               "location": {
                 "line": 37,
@@ -2799,7 +2799,7 @@
               "fullName": " Challenge 08: Task Editing TaskList should pass tasks to TaskCard",
               "status": "passed",
               "title": "TaskList should pass tasks to TaskCard",
-              "duration": 7,
+              "duration": 8,
               "failureMessages": []
             },
             {
@@ -2814,8 +2814,8 @@
               "failureMessages": []
             }
           ],
-          "startTime": 1781502726262,
-          "endTime": 1781502726317,
+          "startTime": 1781508480035,
+          "endTime": 1781508480093,
           "status": "failed",
           "message": "",
           "name": "D:/React-Frontend/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-08.test.tsx"
@@ -2998,12 +2998,12 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "passed",
-                          "duration": 308,
+                          "duration": 317,
                           "errors": [],
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-15T05:52:13.076Z",
+                          "startTime": "2026-06-15T07:28:07.030Z",
                           "annotations": [],
                           "attachments": []
                         }
@@ -3032,7 +3032,7 @@
                           "workerIndex": 0,
                           "parallelIndex": 0,
                           "status": "failed",
-                          "duration": 5191,
+                          "duration": 5188,
                           "error": {
                             "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#task-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#task-title')\u001b[22m\n",
                             "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#task-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#task-title')\u001b[22m\n\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-08.spec.ts:13:47",
@@ -3056,7 +3056,7 @@
                           "stdout": [],
                           "stderr": [],
                           "retry": 0,
-                          "startTime": "2026-06-15T05:52:13.611Z",
+                          "startTime": "2026-06-15T07:28:07.599Z",
                           "annotations": [],
                           "attachments": [
                             {
@@ -3080,7 +3080,7 @@
                           "workerIndex": 1,
                           "parallelIndex": 0,
                           "status": "failed",
-                          "duration": 5334,
+                          "duration": 5399,
                           "error": {
                             "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#task-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#task-title')\u001b[22m\n",
                             "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#task-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#task-title')\u001b[22m\n\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-08.spec.ts:13:47",
@@ -3104,7 +3104,7 @@
                           "stdout": [],
                           "stderr": [],
                           "retry": 1,
-                          "startTime": "2026-06-15T05:52:20.100Z",
+                          "startTime": "2026-06-15T07:28:14.153Z",
                           "annotations": [],
                           "attachments": [
                             {
@@ -3133,7 +3133,7 @@
                           "workerIndex": 2,
                           "parallelIndex": 0,
                           "status": "failed",
-                          "duration": 5267,
+                          "duration": 5278,
                           "error": {
                             "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#task-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#task-title')\u001b[22m\n",
                             "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: locator('#task-title')\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('#task-title')\u001b[22m\n\n    at D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\e2e\\challenge-08.spec.ts:13:47",
@@ -3157,7 +3157,7 @@
                           "stdout": [],
                           "stderr": [],
                           "retry": 2,
-                          "startTime": "2026-06-15T05:52:26.928Z",
+                          "startTime": "2026-06-15T07:28:21.128Z",
                           "annotations": [],
                           "attachments": [
                             {
@@ -3196,41 +3196,41 @@
     },
     "aiReviewResults": {
       "challengeId": "08-task-editing",
-      "timestamp": "2026-06-15T05:52:32.803Z",
+      "timestamp": "2026-06-15T07:28:27.062Z",
       "score": 83,
       "feedback": [],
       "strengths": [
-        "The code is well-structured and follows a consistent naming convention.",
-        "The use of TypeScript and functional components is a good practice.",
-        "The code is well-commented, making it easier to understand the functionality."
+        "The code is well-structured and easy to follow, with clear and concise function and variable names.",
+        "The use of TypeScript and functional components makes the code more maintainable and scalable.",
+        "The code is well-documented, with clear and concise comments that explain the purpose of each function and variable."
       ],
       "improvements": [
-        "The `TaskCard` component has a lot of props, which can make it harder to maintain. Consider breaking it down into smaller components.",
-        "The `handleSave` function in `TaskCard` can be simplified by using the `onUpdateTask` callback directly.",
-        "The `TaskApp` component has a lot of state and props, which can make it harder to manage. Consider using a more modular approach, such as using a reducer or breaking down the component into smaller ones."
+        "The `TaskCard` component has a lot of duplicated code for handling editing and non-editing modes. This could be refactored into separate functions or components to make the code more maintainable.",
+        "The `TaskApp` component has a lot of complex logic for handling filtering, sorting, and editing tasks. This could be broken down into smaller functions or components to make the code more maintainable.",
+        "The code could benefit from more unit tests to ensure that it is working correctly and to catch any regressions."
       ],
       "readability": 85,
       "maintainability": 80,
-      "overall": "The code is well-structured and follows good practices, but there are some areas that can be improved for better maintainability and readability."
+      "overall": "The code is well-structured and maintainable, but could benefit from some refactoring and additional testing to make it even better."
     },
     "aiResults": {
       "challengeId": "08-task-editing",
-      "timestamp": "2026-06-15T05:52:32.803Z",
+      "timestamp": "2026-06-15T07:28:27.062Z",
       "score": 83,
       "feedback": [],
       "strengths": [
-        "The code is well-structured and follows a consistent naming convention.",
-        "The use of TypeScript and functional components is a good practice.",
-        "The code is well-commented, making it easier to understand the functionality."
+        "The code is well-structured and easy to follow, with clear and concise function and variable names.",
+        "The use of TypeScript and functional components makes the code more maintainable and scalable.",
+        "The code is well-documented, with clear and concise comments that explain the purpose of each function and variable."
       ],
       "improvements": [
-        "The `TaskCard` component has a lot of props, which can make it harder to maintain. Consider breaking it down into smaller components.",
-        "The `handleSave` function in `TaskCard` can be simplified by using the `onUpdateTask` callback directly.",
-        "The `TaskApp` component has a lot of state and props, which can make it harder to manage. Consider using a more modular approach, such as using a reducer or breaking down the component into smaller ones."
+        "The `TaskCard` component has a lot of duplicated code for handling editing and non-editing modes. This could be refactored into separate functions or components to make the code more maintainable.",
+        "The `TaskApp` component has a lot of complex logic for handling filtering, sorting, and editing tasks. This could be broken down into smaller functions or components to make the code more maintainable.",
+        "The code could benefit from more unit tests to ensure that it is working correctly and to catch any regressions."
       ],
       "readability": 85,
       "maintainability": 80,
-      "overall": "The code is well-structured and follows good practices, but there are some areas that can be improved for better maintainability and readability."
+      "overall": "The code is well-structured and maintainable, but could benefit from some refactoring and additional testing to make it even better."
     }
   }
 ]

@@ -93,6 +93,7 @@ export default function TaskCard({
       {isEditing ? (
         <>
           <input
+            type="text"
             value={editTitle}
             onChange={(e) =>
               setEditTitle(e.target.value)
