@@ -1,7 +1,7 @@
 {
   "courseId": "01-react-fundamentals",
   "courseName": "React Fundamentals",
-  "lastUpdated": "2026-06-15T05:34:52.566Z",
+  "lastUpdated": "2026-06-15T05:52:34.556Z",
   "totalChallenges": 23,
   "completedChallenges": 7,
   "averageScore": 88.1,
@@ -53,7 +53,7 @@
     {
       "challengeId": "08-task-editing",
       "challengeName": "Task Editing",
-      "score": 79.045,
+      "score": 78.295,
       "passed": false
     }
   ],

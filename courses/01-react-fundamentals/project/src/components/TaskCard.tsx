@@ -79,9 +79,7 @@ export default function TaskCard({
       id="task-card"
       data-completed={completed}
       style={{
-        backgroundColor: completed
-          ? "#e5e7eb"
-          : "white",
+        backgroundColor: completed ? "#e5e7eb" : "white",
       }}
     >
       {onToggle && (
