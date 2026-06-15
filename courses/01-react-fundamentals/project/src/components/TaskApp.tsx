@@ -1,5 +1,4 @@
 import { useState } from "react";
-import type { Dispatch, SetStateAction } from "react";
 import TaskList from "./TaskList";
 import TaskForm from "./TaskForm";
 import FilterBar from "./FilterBar";
@@ -7,7 +6,7 @@ import type { Task } from "./TaskList";
 
 interface TaskAppProps {
   tasks: Task[];
-  setTasks?: Dispatch<SetStateAction<Task[]>>;
+  setTasks?: React.Dispatch<React.SetStateAction<Task[]>>;
   showForm?: boolean;
   onDelete?: (id: string | number) => void;
   showFilterBar?: boolean;
@@ -16,29 +15,31 @@ interface TaskAppProps {
 export default function TaskApp({
   tasks,
   setTasks,
-  showForm = false,
+  showForm,
   onDelete,
-  showFilterBar = false,
+  showFilterBar,
 }: TaskAppProps) {
   const [filter, setFilter] = useState<
     "all" | "active" | "completed"
   >("all");
 
-  const [sortOrder, setSortOrder] = useState<
-    "recent" | "highToLow" | "lowToHigh" | "alphabetical"
-  >("recent");
+  const [sortOrder, setSortOrder] =
+    useState("recent");
+
+  const [searchText, setSearchText] =
+    useState("");
 
   const [editingId, setEditingId] = useState<
     string | number | null
   >(null);
 
-  const handleAddTask = (task: Task) => {
-    if (!setTasks) return;
+  function handleAddTask(task: Task) {
+    if (setTasks) {
+      setTasks((prev) => [...prev, task]);
+    }
+  }
 
-    setTasks((prev) => [...prev, task]);
-  };
-
-  const handleToggle = (id: string | number) => {
+  function handleToggle(id: string | number) {
     if (!setTasks) return;
 
     setTasks((prev) =>
@@ -51,89 +52,102 @@ export default function TaskApp({
           : task
       )
     );
-  };
+  }
 
-  const handleDelete = (id: string | number) => {
-    if (onDelete) {
-      onDelete(id);
-      return;
-    }
-
-    if (!setTasks) return;
-
-    setTasks((prev) =>
-      prev.filter((task) => task.id !== id)
-    );
-  };
-
-  const handleUpdateTask = (
+  function handleUpdateTask(
     id: string | number,
     updates: {
       title: string;
       description: string;
       priority: string;
     }
-  ) => {
+  ) {
     if (!setTasks) return;
 
-    if (!updates.title.trim()) return;
+    if (!updates.title.trim()) {
+      return;
+    }
 
     setTasks((prev) =>
       prev.map((task) =>
         task.id === id
-          ? { ...task, ...updates }
+          ? {
+              ...task,
+              ...updates,
+            }
           : task
       )
     );
 
     setEditingId(null);
-  };
+  }
 
-  const filteredTasks = tasks.filter((task) => {
-    if (filter === "active") return !task.completed;
-    if (filter === "completed") return task.completed;
-    return true;
-  });
+  // Filter
+  const statusFiltered =
+    filter === "all"
+      ? tasks
+      : filter === "active"
+      ? tasks.filter((t) => !t.completed)
+      : tasks.filter((t) => t.completed);
 
-  const priorityOrder: Record<string, number> = {
-    High: 3,
-    Medium: 2,
-    Low: 1,
-  };
+  // Search
+  const searchedTasks =
+    statusFiltered.filter((task) => {
+      const search =
+        searchText.toLowerCase();
 
-  const sortedTasks = [...filteredTasks].sort((a, b) => {
-    switch (sortOrder) {
-      case "highToLow":
+      return (
+        task.title
+          .toLowerCase()
+          .includes(search) ||
+        task.description
+          .toLowerCase()
+          .includes(search)
+      );
+    });
+
+  // Sort
+  const priorityValue: Record<string, number> =
+    {
+      High: 3,
+      Medium: 2,
+      Low: 1,
+    };
+
+  const sortedTasks = [...searchedTasks].sort(
+    (a, b) => {
+      if (sortOrder === "high") {
         return (
-          priorityOrder[b.priority] -
-          priorityOrder[a.priority]
+          priorityValue[b.priority] -
+          priorityValue[a.priority]
         );
+      }
 
-      case "lowToHigh":
+      if (sortOrder === "low") {
         return (
-          priorityOrder[a.priority] -
-          priorityOrder[b.priority]
+          priorityValue[a.priority] -
+          priorityValue[b.priority]
         );
+      }
 
-      case "alphabetical":
-        return a.title.localeCompare(
-          b.title,
-          undefined,
-          {
-            sensitivity: "base",
-          }
-        );
+      if (sortOrder === "alphabetical") {
+        return a.title
+          .toLowerCase()
+          .localeCompare(
+            b.title.toLowerCase()
+          );
+      }
 
-      case "recent":
-      default:
-        return 0;
+      return 0;
     }
-  });
+  );
 
   return (
     <div>
       {showForm && (
-        <TaskForm onAddTask={handleAddTask} />
+        <TaskForm
+          onAddTask={handleAddTask}
+        />
       )}
 
       {showFilterBar && (
@@ -142,22 +156,28 @@ export default function TaskApp({
           onFilterChange={setFilter}
           sortOrder={sortOrder}
           onSortChange={setSortOrder}
+          searchText={searchText}
+          onSearchChange={setSearchText}
+          onClearSearch={() =>
+            setSearchText("")
+          }
         />
       )}
 
       <div id="task-count">
-        Showing {sortedTasks.length} of {tasks.length} tasks
+        Showing {sortedTasks.length} of{" "}
+        {tasks.length} tasks
       </div>
 
       {sortedTasks.length === 0 ? (
         <div id="filter-empty-message">
-          No tasks match this filter
+          No tasks found
         </div>
       ) : (
         <TaskList
           tasks={sortedTasks}
           onToggle={handleToggle}
-          onDelete={handleDelete}
+          onDelete={onDelete}
           countText={`Showing ${sortedTasks.length} of ${tasks.length} tasks`}
           onUpdateTask={handleUpdateTask}
           editingId={editingId}

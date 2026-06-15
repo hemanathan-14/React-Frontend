@@ -1,23 +1,25 @@
-interface FilterBarProps{
-  filter: "all" | "active" | "completed";
-  onFilterChange:(
-    filter:"all"|"active"|"completed"
-  )=>void;
+type Filter = "all" | "active" | "completed";
 
+interface FilterBarProps {
+  filter: Filter;
+  onFilterChange: (filter: Filter) => void;
+  sortOrder: string;
+  onSortChange: (value: string) => void;
 
-
-
-sortOrder: "recent" | "highToLow" | "lowToHigh" | "alphabetical";
-  onSortChange: (
-    sort: "recent" | "highToLow" | "lowToHigh" | "alphabetical"
-  ) => void;
+  // Challenge 09
+  searchText?: string;
+  onSearchChange?: (value: string) => void;
+  onClearSearch?: () => void;
 }
 
-export default function FilterBar({
+function FilterBar({
   filter,
   onFilterChange,
   sortOrder,
   onSortChange,
+  searchText = "",
+  onSearchChange,
+  onClearSearch,
 }: FilterBarProps) {
   return (
     <div id="filter-bar">
@@ -45,21 +47,46 @@ export default function FilterBar({
       <select
         id="sort-order"
         value={sortOrder}
-        onChange={(e) =>
-          onSortChange(
-            e.target.value as
-              | "recent"
-              | "highToLow"
-              | "lowToHigh"
-              | "alphabetical"
-          )
-        }
+        onChange={(e) => onSortChange(e.target.value)}
       >
-        <option value="recent">Recently Added</option>
-        <option value="highToLow">Priority: High to Low</option>
-        <option value="lowToHigh">Priority: Low to High</option>
-        <option value="alphabetical">Alphabetical</option>
+        <option value="recent">
+          Recently Added
+        </option>
+
+        <option value="high">
+          Priority: High to Low
+        </option>
+
+        <option value="low">
+          Priority: Low to High
+        </option>
+
+        <option value="alphabetical">
+          Alphabetical
+        </option>
       </select>
+
+      <input
+        id="search-input"
+        type="text"
+        placeholder="Search tasks..."
+        value={searchText}
+        onChange={(e) =>
+          onSearchChange?.(e.target.value)
+        }
+      />
+
+      {searchText.trim() !== "" && (
+        <button
+          id="clear-search"
+          type="button"
+          onClick={() => onClearSearch?.()}
+        >
+          Clear search
+        </button>
+      )}
     </div>
   );
 }
+
+export default FilterBar;
