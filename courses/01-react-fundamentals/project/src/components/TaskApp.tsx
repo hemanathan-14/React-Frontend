@@ -1,18 +1,23 @@
 import { useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import TaskList from "./TaskList";
-import type { Task } from "./TaskList";
+import TaskForm from "./TaskForm";
 import FilterBar from "./FilterBar";
+import type { Task } from "./TaskList";
 
 interface TaskAppProps {
-  tasks?: Task[];
+  tasks: Task[];
   setTasks?: Dispatch<SetStateAction<Task[]>>;
+  showForm?: boolean;
+  onDelete?: (id: string | number) => void;
   showFilterBar?: boolean;
 }
 
 export default function TaskApp({
-  tasks = [],
+  tasks,
   setTasks,
+  showForm = false,
+  onDelete,
   showFilterBar = false,
 }: TaskAppProps) {
   const [filter, setFilter] = useState<
@@ -27,19 +32,33 @@ export default function TaskApp({
     string | number | null
   >(null);
 
+  const handleAddTask = (task: Task) => {
+    if (!setTasks) return;
+
+    setTasks((prev) => [...prev, task]);
+  };
+
   const handleToggle = (id: string | number) => {
     if (!setTasks) return;
 
     setTasks((prev) =>
       prev.map((task) =>
         task.id === id
-          ? { ...task, completed: !task.completed }
+          ? {
+              ...task,
+              completed: !task.completed,
+            }
           : task
       )
     );
   };
 
   const handleDelete = (id: string | number) => {
+    if (onDelete) {
+      onDelete(id);
+      return;
+    }
+
     if (!setTasks) return;
 
     setTasks((prev) =>
@@ -57,6 +76,8 @@ export default function TaskApp({
   ) => {
     if (!setTasks) return;
 
+    if (!updates.title.trim()) return;
+
     setTasks((prev) =>
       prev.map((task) =>
         task.id === id
@@ -64,6 +85,8 @@ export default function TaskApp({
           : task
       )
     );
+
+    setEditingId(null);
   };
 
   const filteredTasks = tasks.filter((task) => {
@@ -108,36 +131,39 @@ export default function TaskApp({
   });
 
   return (
-    <section>
-      {showFilterBar && (
-        <>
-          <FilterBar
-            filter={filter}
-            onFilterChange={setFilter}
-            sortOrder={sortOrder}
-            onSortChange={setSortOrder}
-          />
-
-          <h2 id="task-count">
-            Showing {sortedTasks.length} of {tasks.length} tasks
-          </h2>
-        </>
+    <div>
+      {showForm && (
+        <TaskForm onAddTask={handleAddTask} />
       )}
 
+      {showFilterBar && (
+        <FilterBar
+          filter={filter}
+          onFilterChange={setFilter}
+          sortOrder={sortOrder}
+          onSortChange={setSortOrder}
+        />
+      )}
+
+      <div id="task-count">
+        Showing {sortedTasks.length} of {tasks.length} tasks
+      </div>
+
       {sortedTasks.length === 0 ? (
-        <p id="filter-empty-message">
+        <div id="filter-empty-message">
           No tasks match this filter
-        </p>
+        </div>
       ) : (
         <TaskList
           tasks={sortedTasks}
           onToggle={handleToggle}
           onDelete={handleDelete}
+          countText={`Showing ${sortedTasks.length} of ${tasks.length} tasks`}
           onUpdateTask={handleUpdateTask}
           editingId={editingId}
           setEditingId={setEditingId}
         />
       )}
-    </section>
+    </div>
   );
 }

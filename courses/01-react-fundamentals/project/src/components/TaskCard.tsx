@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface TaskCardProps {
   title: string;
   description: string;
-  priority: string;
+  priority?: string;
   completed?: boolean;
   onToggle?: (id: string | number) => void;
-  taskId?: string | number;
   onDelete?: (id: string | number) => void;
+  taskId?: string | number;
+  id?: string | number;
+
+  editingId?: string | number | null;
+  setEditingId?: (
+    id: string | number | null
+  ) => void;
 
   onUpdateTask?: (
     id: string | number,
@@ -17,24 +23,24 @@ interface TaskCardProps {
       priority: string;
     }
   ) => void;
-
-  editingId?: string | number | null;
-  setEditingId?: (id: string | number | null) => void;
 }
 
 export default function TaskCard({
   title,
   description,
-  priority,
-  completed = false,
+  priority = "Low",
+  completed,
   onToggle,
-  taskId,
   onDelete,
-  onUpdateTask,
+  taskId,
+  id,
   editingId,
   setEditingId,
+  onUpdateTask,
 }: TaskCardProps) {
-  const isEditing = editingId === taskId;
+  const resolvedId = taskId ?? id ?? 0;
+
+  const isEditing = editingId === resolvedId;
 
   const [editTitle, setEditTitle] = useState(title);
   const [editDescription, setEditDescription] =
@@ -42,15 +48,31 @@ export default function TaskCard({
   const [editPriority, setEditPriority] =
     useState(priority);
 
-  const handleDelete = () => {
-    onDelete?.(taskId!);
-  };
+  useEffect(() => {
+    if (isEditing) {
+      setEditTitle(title);
+      setEditDescription(description);
+      setEditPriority(priority);
+    }
+  }, [
+    isEditing,
+    title,
+    description,
+    priority,
+  ]);
 
-  const handleEdit = () => {
-    setEditTitle(title);
-    setEditDescription(description);
-    setEditPriority(priority);
-    setEditingId?.(taskId!);
+  const handleSave = () => {
+    if (!editTitle.trim()) {
+      return;
+    }
+
+    onUpdateTask?.(resolvedId, {
+      title: editTitle,
+      description: editDescription,
+      priority: editPriority,
+    });
+
+    setEditingId?.(null);
   };
 
   const handleCancel = () => {
@@ -60,102 +82,143 @@ export default function TaskCard({
     setEditingId?.(null);
   };
 
-  const handleSave = () => {
-    if (!editTitle.trim()) {
-      return;
-    }
-
-    onUpdateTask?.(taskId!, {
-      title: editTitle.trim(),
-      description: editDescription,
-      priority: editPriority,
-    });
-
-    setEditingId?.(null);
-  };
-
   return (
     <article
       id="task-card"
-      data-completed={completed}
+      data-completed={
+        completed ? "true" : undefined
+      }
       style={{
-        backgroundColor: completed ? "#e5e7eb" : "white",
+        background: completed
+          ? "#e6ffe6"
+          : undefined,
+        padding: "10px",
+        marginBottom: "10px",
       }}
     >
       {onToggle && (
         <input
           type="checkbox"
-          checked={completed}
-          onChange={() => onToggle(taskId!)}
+          checked={!!completed}
+          onChange={() =>
+            onToggle(resolvedId)
+          }
         />
       )}
 
       {isEditing ? (
         <>
           <input
-            type="text"
             value={editTitle}
             onChange={(e) =>
-              setEditTitle(e.target.value)
+              setEditTitle(
+                e.target.value
+              )
             }
           />
 
           <textarea
             value={editDescription}
             onChange={(e) =>
-              setEditDescription(e.target.value)
+              setEditDescription(
+                e.target.value
+              )
             }
           />
 
           <select
             value={editPriority}
             onChange={(e) =>
-              setEditPriority(e.target.value)
+              setEditPriority(
+                e.target.value
+              )
             }
           >
-            <option value="High">High</option>
-            <option value="Medium">Medium</option>
-            <option value="Low">Low</option>
+            <option value="Low">
+              Low
+            </option>
+            <option value="Medium">
+              Medium
+            </option>
+            <option value="High">
+              High
+            </option>
           </select>
 
-          <button onClick={handleSave}>
+          <button
+            type="button"
+            onClick={handleSave}
+          >
             Save
           </button>
 
-          <button onClick={handleCancel}>
+          <button
+            type="button"
+            onClick={handleCancel}
+          >
             Cancel
           </button>
         </>
       ) : (
         <>
           <h2
-            style={{
-              textDecoration: completed
-                ? "line-through"
-                : "none",
-            }}
+            style={
+              completed
+                ? {
+                    textDecoration:
+                      "line-through",
+                  }
+                : undefined
+            }
           >
             {title}
           </h2>
 
           <p
-            style={{
-              textDecoration: completed
-                ? "line-through"
-                : "none",
-            }}
+            style={
+              completed
+                ? {
+                    textDecoration:
+                      "line-through",
+                  }
+                : undefined
+            }
           >
             {description}
           </p>
 
-          <p>Priority: {priority}</p>
+          <p>
+            Priority: {priority}
+          </p>
 
-          <button onClick={handleEdit}>
-            Edit
-          </button>
+          {setEditingId && (
+            <button
+              type="button"
+              onClick={() =>
+                setEditingId(
+                  resolvedId
+                )
+              }
+            >
+              Edit
+            </button>
+          )}
 
           {onDelete && (
-            <button onClick={handleDelete}>
+            <button
+              type="button"
+              onClick={() => {
+                if (
+                  window.confirm(
+                    "Are you sure you want to delete this task?"
+                  )
+                ) {
+                  onDelete(
+                    resolvedId
+                  );
+                }
+              }}
+            >
               Delete
             </button>
           )}
