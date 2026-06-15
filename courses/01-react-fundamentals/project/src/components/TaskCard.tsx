@@ -43,9 +43,7 @@ export default function TaskCard({
     useState(priority);
 
   const handleDelete = () => {
-    if (window.confirm("Are you sure?")) {
-      onDelete?.(taskId!);
-    }
+    onDelete?.(taskId!);
   };
 
   const handleEdit = () => {
@@ -63,7 +61,9 @@ export default function TaskCard({
   };
 
   const handleSave = () => {
-    if (!editTitle.trim()) return;
+    if (!editTitle.trim()) {
+      return;
+    }
 
     onUpdateTask?.(taskId!, {
       title: editTitle.trim(),
