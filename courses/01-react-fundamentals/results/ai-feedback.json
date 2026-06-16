@@ -224,5 +224,28 @@
       "maintainability": 90,
       "overall": "The code is well-structured and maintainable, with a good separation of concerns between different components. However, there are a few areas where the code could be improved to make it more robust and error-free."
     }
+  },
+  {
+    "challengeId": "11-useeffect-debounced-search",
+    "challengeName": "useEffect - Debounced Search",
+    "aiReview": {
+      "challengeId": "11-useeffect-debounced-search",
+      "timestamp": "2026-06-16T05:04:37.941Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "Effective use of React Hooks and state management",
+        "Clear separation of concerns between components",
+        "Well-structured and concise code"
+      ],
+      "improvements": [
+        "Consider using a more robust debouncing library to handle edge cases",
+        "Some variable names could be more descriptive for better code readability",
+        "Consider adding more tests to cover edge cases and ensure code quality"
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured, maintainable, and demonstrates a good understanding of React Hooks and state management. However, there are some areas for improvement to make the code more robust and efficient."
+    }
   }
 ]

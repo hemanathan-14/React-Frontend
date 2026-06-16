@@ -3772,5 +3772,297 @@
       "maintainability": 90,
       "overall": "The code is well-structured and maintainable, with a good separation of concerns between different components. However, there are a few areas where the code could be improved to make it more robust and error-free."
     }
+  },
+  {
+    "challengeId": "11-useeffect-debounced-search",
+    "challengeName": "useEffect - Debounced Search",
+    "timestamp": "2026-06-16T05:04:23.338Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 98,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 88
+    },
+    "totalScore": 97.9,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 11: useEffect - Debounced Search"
+              ],
+              "fullName": " Challenge 11: useEffect - Debounced Search FilterBar should exist for search/debounce integration",
+              "status": "passed",
+              "title": "FilterBar should exist for search/debounce integration",
+              "duration": 24,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 11: useEffect - Debounced Search"
+              ],
+              "fullName": " Challenge 11: useEffect - Debounced Search TaskList should render tasks",
+              "status": "passed",
+              "title": "TaskList should render tasks",
+              "duration": 15,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1781586266785,
+          "endTime": 1781586266824,
+          "status": "passed",
+          "message": "",
+          "name": "D:/React-Frontend/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-11.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 98,
+      "passed": true,
+      "totalIssues": 1,
+      "errors": 0,
+      "warnings": 1,
+      "details": [
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\App.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\components\\FilterBar.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\components\\TaskApp.tsx",
+          "messages": [
+            {
+              "ruleId": "react-hooks/exhaustive-deps",
+              "severity": 1,
+              "message": "React Hook useEffect has a missing dependency: 'debouncedSearchText'. Either include it or remove the dependency array.",
+              "line": 56,
+              "column": 6,
+              "nodeType": "ArrayExpression",
+              "endLine": 56,
+              "endColumn": 18,
+              "suggestions": [
+                {
+                  "desc": "Update the dependencies array to be: [debouncedSearchText, searchText]",
+                  "fix": {
+                    "range": [
+                      1295,
+                      1307
+                    ],
+                    "text": "[debouncedSearchText, searchText]"
+                  }
+                }
+              ]
+            }
+          ],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 1,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "source": "import { useState, useEffect } from \"react\";\r\nimport TaskList from \"./TaskList\";\r\nimport TaskForm from \"./TaskForm\";\r\nimport FilterBar from \"./FilterBar\";\r\nimport type { Task } from \"./TaskList\";\r\n\r\ninterface TaskAppProps {\r\n  tasks: Task[];\r\n  setTasks?: React.Dispatch<React.SetStateAction<Task[]>>;\r\n  showForm?: boolean;\r\n  onDelete?: (id: string | number) => void;\r\n  showFilterBar?: boolean;\r\n}\r\n\r\nexport default function TaskApp({\r\n  tasks,\r\n  setTasks,\r\n  showForm,\r\n  onDelete,\r\n  showFilterBar,\r\n}: TaskAppProps) {\r\n  const [filter, setFilter] = useState<\r\n    \"all\" | \"active\" | \"completed\"\r\n  >(\"all\");\r\n\r\n  const [sortOrder, setSortOrder] =\r\n    useState(\"recent\");\r\n\r\n  const [searchText, setSearchText] =\r\n    useState(\"\");\r\n\r\n  // Challenge 11\r\n  const [debouncedSearchText, setDebouncedSearchText] =\r\n    useState(\"\");\r\n\r\n  const [isSearching, setIsSearching] =\r\n    useState(false);\r\n\r\n  const [editingId, setEditingId] = useState<\r\n    string | number | null\r\n  >(null);\r\n\r\n  useEffect(() => {\r\n    if (searchText !== debouncedSearchText) {\r\n      setIsSearching(true);\r\n    }\r\n\r\n    const timeoutId = setTimeout(() => {\r\n      setDebouncedSearchText(searchText);\r\n      setIsSearching(false);\r\n    }, 300);\r\n\r\n    return () => {\r\n      clearTimeout(timeoutId);\r\n    };\r\n  }, [searchText]);\r\n\r\n  function handleAddTask(task: Task) {\r\n    if (setTasks) {\r\n      setTasks((prev) => [...prev, task]);\r\n    }\r\n  }\r\n\r\n  function handleToggle(id: string | number) {\r\n    if (!setTasks) return;\r\n\r\n    setTasks((prev) =>\r\n      prev.map((task) =>\r\n        task.id === id\r\n          ? {\r\n              ...task,\r\n              completed: !task.completed,\r\n            }\r\n          : task\r\n      )\r\n    );\r\n  }\r\n\r\n  function handleUpdateTask(\r\n    id: string | number,\r\n    updates: {\r\n      title: string;\r\n      description: string;\r\n      priority: string;\r\n    }\r\n  ) {\r\n    if (!setTasks) return;\r\n\r\n    if (!updates.title.trim()) {\r\n      return;\r\n    }\r\n\r\n    setTasks((prev) =>\r\n      prev.map((task) =>\r\n        task.id === id\r\n          ? {\r\n              ...task,\r\n              ...updates,\r\n            }\r\n          : task\r\n      )\r\n    );\r\n\r\n    setEditingId(null);\r\n  }\r\n\r\n  // Filter\r\n  const statusFiltered =\r\n    filter === \"all\"\r\n      ? tasks\r\n      : filter === \"active\"\r\n      ? tasks.filter((t) => !t.completed)\r\n      : tasks.filter((t) => t.completed);\r\n\r\n  // Search (using debounced value)\r\n  const searchedTasks =\r\n    statusFiltered.filter((task) => {\r\n      const search =\r\n        debouncedSearchText.toLowerCase();\r\n\r\n      return (\r\n        task.title\r\n          .toLowerCase()\r\n          .includes(search) ||\r\n        task.description\r\n          .toLowerCase()\r\n          .includes(search)\r\n      );\r\n    });\r\n\r\n  // Sort\r\n  const priorityValue: Record<string, number> =\r\n    {\r\n      High: 3,\r\n      Medium: 2,\r\n      Low: 1,\r\n    };\r\n\r\n  const sortedTasks = [...searchedTasks].sort(\r\n    (a, b) => {\r\n      if (sortOrder === \"high\") {\r\n        return (\r\n          priorityValue[b.priority] -\r\n          priorityValue[a.priority]\r\n        );\r\n      }\r\n\r\n      if (sortOrder === \"low\") {\r\n        return (\r\n          priorityValue[a.priority] -\r\n          priorityValue[b.priority]\r\n        );\r\n      }\r\n\r\n      if (sortOrder === \"alphabetical\") {\r\n        return a.title\r\n          .toLowerCase()\r\n          .localeCompare(\r\n            b.title.toLowerCase()\r\n          );\r\n      }\r\n\r\n      return 0;\r\n    }\r\n  );\r\n\r\n  return (\r\n    <div>\r\n      {showForm && (\r\n        <TaskForm\r\n          onAddTask={handleAddTask}\r\n        />\r\n      )}\r\n\r\n      {showFilterBar && (\r\n        <FilterBar\r\n          filter={filter}\r\n          onFilterChange={setFilter}\r\n          sortOrder={sortOrder}\r\n          onSortChange={setSortOrder}\r\n          searchText={searchText}\r\n          onSearchChange={setSearchText}\r\n          onClearSearch={() =>\r\n            setSearchText(\"\")\r\n          }\r\n          isSearching={isSearching}\r\n        />\r\n      )}\r\n\r\n      <div id=\"task-count\">\r\n        Showing {sortedTasks.length} of{\" \"}\r\n        {tasks.length} tasks\r\n      </div>\r\n\r\n      {sortedTasks.length === 0 ? (\r\n        <div id=\"filter-empty-message\">\r\n          No tasks found\r\n        </div>\r\n      ) : (\r\n        <TaskList\r\n          tasks={sortedTasks}\r\n          onToggle={handleToggle}\r\n          onDelete={onDelete}\r\n          countText={`Showing ${sortedTasks.length} of ${tasks.length} tasks`}\r\n          onUpdateTask={handleUpdateTask}\r\n          editingId={editingId}\r\n          setEditingId={setEditingId}\r\n        />\r\n      )}\r\n    </div>\r\n  );\r\n}",
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "useEffect"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/components/FilterBar.tsx",
+          "patternsFound": [
+            "functionalComponent"
+          ],
+          "patternsMissing": [
+            "useEffect"
+          ]
+        },
+        {
+          "file": "src/components/TaskApp.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "useEffect"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/App.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "useEffect"
+          ],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-11.spec.ts",
+          "file": "challenge-11.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 11: useEffect Debounced Search - E2E",
+              "file": "challenge-11.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display task list",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 375,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-16T05:04:35.339Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1017095ef2170c8a8deb-e3db42bbbc868bb5cc60",
+                  "file": "challenge-11.spec.ts",
+                  "line": 8,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "11-useeffect-debounced-search",
+      "timestamp": "2026-06-16T05:04:37.941Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "Effective use of React Hooks and state management",
+        "Clear separation of concerns between components",
+        "Well-structured and concise code"
+      ],
+      "improvements": [
+        "Consider using a more robust debouncing library to handle edge cases",
+        "Some variable names could be more descriptive for better code readability",
+        "Consider adding more tests to cover edge cases and ensure code quality"
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured, maintainable, and demonstrates a good understanding of React Hooks and state management. However, there are some areas for improvement to make the code more robust and efficient."
+    },
+    "aiResults": {
+      "challengeId": "11-useeffect-debounced-search",
+      "timestamp": "2026-06-16T05:04:37.941Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "Effective use of React Hooks and state management",
+        "Clear separation of concerns between components",
+        "Well-structured and concise code"
+      ],
+      "improvements": [
+        "Consider using a more robust debouncing library to handle edge cases",
+        "Some variable names could be more descriptive for better code readability",
+        "Consider adding more tests to cover edge cases and ensure code quality"
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured, maintainable, and demonstrates a good understanding of React Hooks and state management. However, there are some areas for improvement to make the code more robust and efficient."
+    }
   }
 ]
