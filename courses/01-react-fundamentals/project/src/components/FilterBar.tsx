@@ -3,26 +3,31 @@ type Filter = "all" | "active" | "completed";
 interface FilterBarProps {
   filter: Filter;
   onFilterChange: (filter: Filter) => void;
+
   sortOrder: string;
   onSortChange: (value: string) => void;
 
-  searchText?: string;
-  onSearchChange?: (value: string) => void;
-  onClearSearch?: () => void;
+  searchText: string;
+  onSearchChange: (value: string) => void;
+  onClearSearch: () => void;
 
-  // Challenge 11
-  isSearching?: boolean;
+  // Challenge 12
+  categories: string[];
+  selectedCategory: string;
+  onCategoryChange: (value: string) => void;
 }
 
-function FilterBar({
+export default function FilterBar({
   filter,
   onFilterChange,
   sortOrder,
   onSortChange,
-  searchText = "",
+  searchText,
   onSearchChange,
   onClearSearch,
-  isSearching = false,
+  categories,
+  selectedCategory,
+  onCategoryChange,
 }: FilterBarProps) {
   return (
     <div id="filter-bar">
@@ -50,7 +55,9 @@ function FilterBar({
       <select
         id="sort-order"
         value={sortOrder}
-        onChange={(e) => onSortChange(e.target.value)}
+        onChange={(e) =>
+          onSortChange(e.target.value)
+        }
       >
         <option value="recent">
           Recently Added
@@ -69,27 +76,42 @@ function FilterBar({
         </option>
       </select>
 
+      {/* Category Filter */}
+      <select
+        id="category-filter"
+        value={selectedCategory}
+        onChange={(e) =>
+          onCategoryChange(e.target.value)
+        }
+      >
+        <option value="All categories">
+          All categories
+        </option>
+
+        {categories.map((category) => (
+          <option
+            key={category}
+            value={category}
+          >
+            {category}
+          </option>
+        ))}
+      </select>
+
       <input
         id="search-input"
         type="text"
         placeholder="Search tasks..."
         value={searchText}
         onChange={(e) =>
-          onSearchChange?.(e.target.value)
+          onSearchChange(e.target.value)
         }
       />
 
-      {isSearching && (
-        <div id="searching-indicator">
-          Searching...
-        </div>
-      )}
-
-      {searchText.trim() !== "" && (
+      {searchText && (
         <button
           id="clear-search"
-          type="button"
-          onClick={() => onClearSearch?.()}
+          onClick={onClearSearch}
         >
           Clear search
         </button>
@@ -97,5 +119,3 @@ function FilterBar({
     </div>
   );
 }
-
-export default FilterBar;
