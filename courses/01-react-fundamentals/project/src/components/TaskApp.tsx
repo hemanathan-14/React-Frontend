@@ -28,7 +28,6 @@ export default function TaskApp({
   const [sortOrder, setSortOrder] =
     useState("recent");
 
-  // Challenge 12
   const [selectedCategory, setSelectedCategory] =
     useState("All categories");
 
@@ -47,7 +46,6 @@ export default function TaskApp({
     string | number | null
   >(null);
 
-  // Unique categories
   const categories = [
     ...new Set(
       tasks
@@ -96,6 +94,7 @@ export default function TaskApp({
       title: string;
       description: string;
       priority: string;
+      dueDate?: string | number;
     }
   ) {
     if (!setTasks) return;
@@ -118,7 +117,6 @@ export default function TaskApp({
     setEditingId(null);
   }
 
-  // Status filter
   let filteredTasks =
     filter === "all"
       ? tasks
@@ -130,7 +128,6 @@ export default function TaskApp({
           (task) => task.completed
         );
 
-  // Category filter
   if (
     selectedCategory !==
     "All categories"
@@ -141,7 +138,6 @@ export default function TaskApp({
     );
   }
 
-  // Search filter
   filteredTasks = filteredTasks.filter(
     (task) =>
       task.title
@@ -165,7 +161,6 @@ export default function TaskApp({
     Low: 1,
   };
 
-  // Sort
   const sortedTasks = [
     ...filteredTasks,
   ].sort((a, b) => {
@@ -180,6 +175,32 @@ export default function TaskApp({
       return (
         priorityValue[a.priority] -
         priorityValue[b.priority]
+      );
+    }
+
+    if (sortOrder === "due-date") {
+      if (
+        !a.dueDate &&
+        !b.dueDate
+      ) {
+        return 0;
+      }
+
+      if (!a.dueDate) {
+        return 1;
+      }
+
+      if (!b.dueDate) {
+        return -1;
+      }
+
+      return (
+        new Date(
+          a.dueDate
+        ).getTime() -
+        new Date(
+          b.dueDate
+        ).getTime()
       );
     }
 

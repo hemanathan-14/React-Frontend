@@ -24,6 +24,7 @@ interface TaskListProps {
       title: string;
       description: string;
       priority: string;
+      dueDate?: string | number;
     }
   ) => void;
 
@@ -91,11 +92,9 @@ export default function TaskList({
             completed={task.completed}
             category={task.category}
             tags={task.tags}
+            dueDate={task.dueDate}
             onToggle={onToggle}
             onDelete={onDelete}
-            onUpdateTask={onUpdateTask}
-            editingId={editingId}
-            setEditingId={setEditingId}
           />
         ))}
       </section>

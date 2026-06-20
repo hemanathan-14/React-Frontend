@@ -270,5 +270,28 @@
       "maintainability": 90,
       "overall": "The code is well-structured and maintainable, with a good balance of readability and performance. However, there are a few areas where the code could be improved to make it more robust and user-friendly."
     }
+  },
+  {
+    "challengeId": "13-due-dates-and-sorting",
+    "challengeName": "Due Dates and Sorting",
+    "aiReview": {
+      "challengeId": "13-due-dates-and-sorting",
+      "timestamp": "2026-06-20T09:59:20.224Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript and functional components makes the code more maintainable and efficient.",
+        "The code includes clear and concise comments, making it easier to understand the functionality."
+      ],
+      "improvements": [
+        "Some of the functions in the TaskApp component are quite long and complex. Consider breaking them down into smaller, more manageable functions.",
+        "The use of magic numbers (e.g., 300 in the useEffect hook) could be avoided by defining constants. This would make the code more readable and maintainable.",
+        "The sorting logic in the TaskApp component could be improved by using a more robust sorting algorithm, such as the built-in Array.prototype.sort() method with a compare function."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and maintainable, but could benefit from some improvements to make it more efficient and scalable. With some refactoring and optimization, this code has the potential to be a high-quality, production-ready application."
+    }
   }
 ]
