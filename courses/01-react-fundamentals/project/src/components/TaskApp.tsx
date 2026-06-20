@@ -1,10 +1,16 @@
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+  useMemo,
+} from "react";
 import TaskList from "./TaskList";
 import TaskForm from "./TaskForm";
 import FilterBar from "./FilterBar";
 import type { Task } from "./TaskList";
+import StatsPanel from "./StatsPanel";
 
 interface TaskAppProps {
+  showStatsPanel?: boolean;
   tasks: Task[];
   setTasks?: React.Dispatch<
     React.SetStateAction<Task[]>
@@ -20,6 +26,7 @@ export default function TaskApp({
   showForm,
   onDelete,
   showFilterBar,
+  showStatsPanel,
 }: TaskAppProps) {
   const [filter, setFilter] = useState<
     "all" | "active" | "completed"
@@ -46,13 +53,45 @@ export default function TaskApp({
     string | number | null
   >(null);
 
-  const categories = [
-    ...new Set(
-      tasks
-        .map((task) => task.category)
-        .filter(Boolean)
-    ),
-  ];
+const categories = [
+  ...new Set(
+    tasks
+      .map((task) => task.category)
+      .filter(Boolean)
+  ),
+];
+
+const stats = useMemo(() => {
+  const total = tasks.length;
+
+  const completed = tasks.filter(
+    (task) => task.completed
+  ).length;
+
+  const active = total - completed;
+
+  const overdue = tasks.filter(
+    (task) =>
+      !task.completed &&
+      task.dueDate &&
+      new Date(task.dueDate) < new Date()
+  ).length;
+
+  const completedPercentage =
+    total === 0
+      ? 0
+      : Math.round(
+          (completed / total) * 100
+        );
+
+  return {
+    total,
+    completed,
+    active,
+    overdue,
+    completedPercentage,
+  };
+}, [tasks]);
 
   useEffect(() => {
     setIsSearching(true);
@@ -251,10 +290,22 @@ export default function TaskApp({
           </div>
         )}
 
-      <div id="task-count">
-        Showing {sortedTasks.length} of{" "}
-        {tasks.length} tasks
-      </div>
+     {showStatsPanel && (
+  <StatsPanel
+    total={stats.total}
+    completed={stats.completed}
+    active={stats.active}
+    overdue={stats.overdue}
+    completedPercentage={
+      stats.completedPercentage
+    }
+  />
+)}
+
+<div id="task-count">
+  Showing {sortedTasks.length} of{" "}
+  {tasks.length} tasks
+</div>
 
       {sortedTasks.length === 0 ? (
         <div id="filter-empty-message">
