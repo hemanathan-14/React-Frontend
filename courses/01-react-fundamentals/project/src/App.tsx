@@ -1,5 +1,6 @@
 import './App.css'
-import { useEffect, useState } from 'react'
+import { taskReducer } from "./reducers/taskReducer";
+import { useReducer } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ChallengeList from './components/ChallengeList'
 import TaskList from './components/TaskList'
@@ -8,6 +9,7 @@ import TaskDetailPage from './components/TaskDetailPage'
 import FetchDemoView from './components/FetchDemoView'
 import { ThemeProvider } from './contexts/ThemeContext'
 import type { Task } from './components/TaskList'
+import { deleteTask } from "./reducers/taskActions";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 const INITIAL_TASKS: Task[] = [
@@ -19,17 +21,16 @@ const INITIAL_TASKS: Task[] = [
 ]
 
 function AppContent() {
-  const [tasks, setTasks] =
-  useLocalStorage<Task[]>(
-    "task-app-tasks",
-    INITIAL_TASKS
-  );
+  const [tasks, dispatch] = useReducer(
+  taskReducer,
+  INITIAL_TASKS
+);
 
 
 
-  const handleDelete = (id: string | number) => {
-     setTasks((prev) => prev.filter((t) => t.id !== id))
-  }
+ const handleDelete = (id: string | number) => {
+  dispatch(deleteTask(id));
+};
 
   return (
     <BrowserRouter>
@@ -38,29 +39,29 @@ function AppContent() {
           <Routes>
             <Route path="/" element={<ChallengeList />} />
             <Route path="/challenge/01-static-task-display" element={<TaskList />} />
-            <Route path="/challenge/02-dynamic-task-rendering" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm={false} countFormat="tasks" />} />
-            <Route path="/challenge/03-adding-new-tasks" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" />} />
-            <Route path="/challenge/04-task-completion-toggle" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="completed" />} />
-            <Route path="/challenge/05-task-deletion" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" onDelete={handleDelete} />} />
-            <Route path="/challenge/06-task-filtering" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar onDelete={handleDelete}/>} />
-            <Route path="/challenge/07-priority-based-sorting" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar onDelete={handleDelete} />} />
-            <Route path="/challenge/08-task-editing" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks"  onDelete={handleDelete} />} />
-            <Route path="/challenge/09-search-functionality" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar onDelete={handleDelete} />} />
-            <Route path="/challenge/10-useeffect-local-storage" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" onDelete={handleDelete} />} />
-            <Route path="/challenge/11-useeffect-debounced-search" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar onDelete={handleDelete} />} />
-            <Route path="/challenge/12-categories-and-tags" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar onDelete={handleDelete} />} />
-            <Route path="/challenge/13-due-dates-and-sorting" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar onDelete={handleDelete} />} />
-            <Route path="/challenge/14-task-statistics-dashboard" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showStatsPanel onDelete={handleDelete} />} />
-            <Route path="/challenge/15-component-organization" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" onDelete={handleDelete} />} />
-            <Route path="/challenge/16-context-api-theme" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" />} />
-            <Route path="/challenge/17-custom-hook-uselocalstorage" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" />} />
-            <Route path="/challenge/18-usereducer-complex-state" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" />} />
-            <Route path="/challenge/19-performance-optimization" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" />} />
-            <Route path="/challenge/20-error-boundaries" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" />} />
-            <Route path="/challenge/21-react-router" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" linkToTaskDetail />} />
+            <Route path="/challenge/02-dynamic-task-rendering" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm={false} countFormat="tasks" />} />
+            <Route path="/challenge/03-adding-new-tasks" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" />} />
+            <Route path="/challenge/04-task-completion-toggle" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="completed" />} />
+            <Route path="/challenge/05-task-deletion" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" onDelete={handleDelete} />} />
+            <Route path="/challenge/06-task-filtering" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" showFilterBar onDelete={handleDelete}/>} />
+            <Route path="/challenge/07-priority-based-sorting" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" showFilterBar onDelete={handleDelete} />} />
+            <Route path="/challenge/08-task-editing" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks"  onDelete={handleDelete} />} />
+            <Route path="/challenge/09-search-functionality" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" showFilterBar onDelete={handleDelete} />} />
+            <Route path="/challenge/10-useeffect-local-storage" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" onDelete={handleDelete} />} />
+            <Route path="/challenge/11-useeffect-debounced-search" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" showFilterBar onDelete={handleDelete} />} />
+            <Route path="/challenge/12-categories-and-tags" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" showFilterBar onDelete={handleDelete} />} />
+            <Route path="/challenge/13-due-dates-and-sorting" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" showFilterBar onDelete={handleDelete} />} />
+            <Route path="/challenge/14-task-statistics-dashboard" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" showStatsPanel onDelete={handleDelete} />} />
+            <Route path="/challenge/15-component-organization" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" onDelete={handleDelete} />} />
+            <Route path="/challenge/16-context-api-theme" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" />} />
+            <Route path="/challenge/17-custom-hook-uselocalstorage" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" />} />
+            <Route path="/challenge/18-usereducer-complex-state" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" />} />
+            <Route path="/challenge/19-performance-optimization" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" />} />
+            <Route path="/challenge/20-error-boundaries" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" />} />
+            <Route path="/challenge/21-react-router" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" linkToTaskDetail />} />
             <Route path="/challenge/21-react-router/task/:id" element={<TaskDetailPage />} />
             <Route path="/challenge/22-data-fetching" element={<FetchDemoView />} />
-            <Route path="/challenge/23-useref-focus-management" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat="tasks" showFilterBar />} />
+            <Route path="/challenge/23-useref-focus-management" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" showFilterBar />} />
           </Routes>
         </main>
       </div>

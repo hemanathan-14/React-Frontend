@@ -10,13 +10,21 @@ import type { Task } from "./TaskList";
 import StatsPanel from "./StatsPanel";
 import Button from "./Button";
 import { useTheme } from "../contexts/ThemeContext";
+import type { TaskAction } from "../reducers/taskReducer";
+
+
+import {
+  addTask,
+  updateTask,
+  toggleTask,
+} from "../reducers/taskActions";
+
+
 
 interface TaskAppProps {
   showStatsPanel?: boolean;
   tasks: Task[];
-  setTasks?: React.Dispatch<
-    React.SetStateAction<Task[]>
-  >;
+  dispatch?: React.Dispatch<TaskAction>;
   showForm?: boolean;
   onDelete?: (id: string | number) => void;
   showFilterBar?: boolean;
@@ -24,7 +32,7 @@ interface TaskAppProps {
 
 export default function TaskApp({
   tasks,
-  setTasks,
+  dispatch,
   showForm,
   onDelete,
   showFilterBar,
@@ -109,54 +117,32 @@ const stats = useMemo(() => {
   }, [searchText]);
 
   function handleAddTask(task: Task) {
-    if (setTasks) {
-      setTasks((prev) => [...prev, task]);
-    }
-  }
+  dispatch?.(addTask(task));
+}
 
   function handleToggle(id: string | number) {
-    if (!setTasks) return;
+  dispatch?.(toggleTask(id));
+}
 
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id
-          ? {
-              ...task,
-              completed: !task.completed,
-            }
-          : task
-      )
-    );
+ function handleUpdateTask(
+  id: string | number,
+  updates: {
+    title: string;
+    description: string;
+    priority: string;
+    dueDate?: string | number;
+  }
+) {
+  if (!updates.title.trim()) {
+    return;
   }
 
-  function handleUpdateTask(
-    id: string | number,
-    updates: {
-      title: string;
-      description: string;
-      priority: string;
-      dueDate?: string | number;
-    }
-  ) {
-    if (!setTasks) return;
+  dispatch?.(
+    updateTask(id, updates)
+  );
 
-    if (!updates.title.trim()) {
-      return;
-    }
-
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id
-          ? {
-              ...task,
-              ...updates,
-            }
-          : task
-      )
-    );
-
-    setEditingId(null);
-  }
+  setEditingId(null);
+}
 
   let filteredTasks =
     filter === "all"
