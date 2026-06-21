@@ -2,6 +2,7 @@ import {
   useEffect,
   useState,
   useMemo,
+  useCallback,
 } from "react";
 import TaskList from "./TaskList";
 import TaskForm from "./TaskForm";
@@ -63,13 +64,16 @@ export default function TaskApp({
     string | number | null
   >(null);
 
-const categories = [
-  ...new Set(
-    tasks
-      .map((task) => task.category)
-      .filter(Boolean)
-  ),
-];
+const categories = useMemo(
+  () => [
+    ...new Set(
+      tasks
+        .map((task) => task.category)
+        .filter(Boolean)
+    ),
+  ],
+  [tasks]
+);
 
 const stats = useMemo(() => {
   const total = tasks.length;
@@ -116,34 +120,48 @@ const stats = useMemo(() => {
     };
   }, [searchText]);
 
-  function handleAddTask(task: Task) {
-  dispatch?.(addTask(task));
-}
+const handleAddTask = useCallback(
+  (task: Task) => {
+    dispatch?.(addTask(task));
+  },
+  [dispatch]
+);
 
-  function handleToggle(id: string | number) {
-  dispatch?.(toggleTask(id));
-}
+const handleToggle = useCallback(
+  (id: string | number) => {
+    dispatch?.(toggleTask(id));
+  },
+  [dispatch]
+);
 
- function handleUpdateTask(
-  id: string | number,
-  updates: {
-    title: string;
-    description: string;
-    priority: string;
-    dueDate?: string | number;
-  }
-) {
-  if (!updates.title.trim()) {
-    return;
-  }
+const handleUpdateTask = useCallback(
+  (
+    id: string | number,
+    updates: {
+      title: string;
+      description: string;
+      priority: string;
+      dueDate?: string | number;
+    }
+  ) => {
+    if (!updates.title.trim()) {
+      return;
+    }
 
-  dispatch?.(
-    updateTask(id, updates)
-  );
+    dispatch?.(
+      updateTask(id, updates)
+    );
 
-  setEditingId(null);
-}
+    setEditingId(null);
+  },
+  [dispatch]
+);
+const handleClearSearch = useCallback(() => {
+  setSearchText("");
+  setDebouncedSearchText("");
+}, []);
 
+const sortedTasks = useMemo(() => {
   let filteredTasks =
     filter === "all"
       ? tasks
@@ -159,25 +177,28 @@ const stats = useMemo(() => {
     selectedCategory !==
     "All categories"
   ) {
-    filteredTasks = filteredTasks.filter(
-      (task) =>
-        task.category === selectedCategory
-    );
+    filteredTasks =
+      filteredTasks.filter(
+        (task) =>
+          task.category ===
+          selectedCategory
+      );
   }
 
-  filteredTasks = filteredTasks.filter(
-    (task) =>
-      task.title
-        .toLowerCase()
-        .includes(
-          debouncedSearchText.toLowerCase()
-        ) ||
-      task.description
-        .toLowerCase()
-        .includes(
-          debouncedSearchText.toLowerCase()
-        )
-  );
+  filteredTasks =
+    filteredTasks.filter(
+      (task) =>
+        task.title
+          .toLowerCase()
+          .includes(
+            debouncedSearchText.toLowerCase()
+          ) ||
+        task.description
+          .toLowerCase()
+          .includes(
+            debouncedSearchText.toLowerCase()
+          )
+    );
 
   const priorityValue: Record<
     string,
@@ -188,59 +209,62 @@ const stats = useMemo(() => {
     Low: 1,
   };
 
-  const sortedTasks = [
-    ...filteredTasks,
-  ].sort((a, b) => {
-    if (sortOrder === "high") {
-      return (
-        priorityValue[b.priority] -
-        priorityValue[a.priority]
-      );
-    }
-
-    if (sortOrder === "low") {
-      return (
-        priorityValue[a.priority] -
-        priorityValue[b.priority]
-      );
-    }
-
-    if (sortOrder === "due-date") {
-      if (
-        !a.dueDate &&
-        !b.dueDate
-      ) {
-        return 0;
-      }
-
-      if (!a.dueDate) {
-        return 1;
-      }
-
-      if (!b.dueDate) {
-        return -1;
-      }
-
-      return (
-        new Date(
-          a.dueDate
-        ).getTime() -
-        new Date(
-          b.dueDate
-        ).getTime()
-      );
-    }
-
-    if (sortOrder === "alphabetical") {
-      return a.title
-        .toLowerCase()
-        .localeCompare(
-          b.title.toLowerCase()
+  return [...filteredTasks].sort(
+    (a, b) => {
+      if (sortOrder === "high") {
+        return (
+          priorityValue[b.priority] -
+          priorityValue[a.priority]
         );
-    }
+      }
 
-    return 0;
-  });
+      if (sortOrder === "low") {
+        return (
+          priorityValue[a.priority] -
+          priorityValue[b.priority]
+        );
+      }
+
+      if (sortOrder === "due-date") {
+        if (!a.dueDate && !b.dueDate) {
+          return 0;
+        }
+
+        if (!a.dueDate) {
+          return 1;
+        }
+
+        if (!b.dueDate) {
+          return -1;
+        }
+
+        return (
+          new Date(a.dueDate).getTime() -
+          new Date(b.dueDate).getTime()
+        );
+      }
+
+      if (
+        sortOrder ===
+        "alphabetical"
+      ) {
+        return a.title
+          .toLowerCase()
+          .localeCompare(
+            b.title.toLowerCase()
+          );
+      }
+
+      return 0;
+    }
+  );
+}, [
+  tasks,
+  filter,
+  selectedCategory,
+  debouncedSearchText,
+  sortOrder,
+]);
   const { theme, toggleTheme } =
   useTheme();
 
@@ -287,10 +311,7 @@ const stats = useMemo(() => {
         onSortChange={setSortOrder}
         searchText={searchText}
         onSearchChange={setSearchText}
-        onClearSearch={() => {
-          setSearchText("");
-          setDebouncedSearchText("");
-        }}
+        onClearSearch={handleClearSearch}
         categories={categories}
         selectedCategory={
           selectedCategory

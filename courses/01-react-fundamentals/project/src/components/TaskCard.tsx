@@ -1,5 +1,6 @@
 import Badge from "./Badge";
 import StatusIndicator from "./StatusIndicator";  
+import React from "react";
 interface TaskCardProps {
   id?: string | number;
   title: string;
@@ -16,7 +17,7 @@ interface TaskCardProps {
   onDelete?: (id: string | number) => void;
 }
 
-export default function TaskCard({
+function TaskCard({
   id,
   title,
   description,
@@ -175,3 +176,4 @@ export default function TaskCard({
     </article>
   );
 }
+export default React.memo(TaskCard);

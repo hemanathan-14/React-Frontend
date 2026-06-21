@@ -1,6 +1,9 @@
 import './App.css'
 import { taskReducer } from "./reducers/taskReducer";
-import { useReducer } from 'react'
+import {
+  useReducer,
+  useCallback,
+} from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ChallengeList from './components/ChallengeList'
 import TaskList from './components/TaskList'
@@ -11,6 +14,7 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import type { Task } from './components/TaskList'
 import { deleteTask } from "./reducers/taskActions";
 import useLocalStorage from "./hooks/useLocalStorage";
+
 
 const INITIAL_TASKS: Task[] = [
   { id: 1, title: 'First Task', description: 'Description one', priority: 'High', completed: false, category: 'General', tags: [] },
@@ -28,9 +32,12 @@ function AppContent() {
 
 
 
- const handleDelete = (id: string | number) => {
-  dispatch(deleteTask(id));
-};
+const handleDelete = useCallback(
+  (id: string | number) => {
+    dispatch(deleteTask(id));
+  },
+  [dispatch]
+);
 
   return (
     <BrowserRouter>
