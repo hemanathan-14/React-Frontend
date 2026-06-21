@@ -8,6 +8,8 @@ import TaskForm from "./TaskForm";
 import FilterBar from "./FilterBar";
 import type { Task } from "./TaskList";
 import StatsPanel from "./StatsPanel";
+import Button from "./Button";
+import { useTheme } from "../contexts/ThemeContext";
 
 interface TaskAppProps {
   showStatsPanel?: boolean;
@@ -253,74 +255,105 @@ const stats = useMemo(() => {
 
     return 0;
   });
+  const { theme, toggleTheme } =
+  useTheme();
 
   return (
-    <main>
-      {showForm && (
-        <TaskForm onAddTask={handleAddTask} />
-      )}
+  <main
+    data-theme={theme}
+    style={{
+      backgroundColor:
+        theme === "dark"
+          ? "#222"
+          : "#ffffff",
+      color:
+        theme === "dark"
+          ? "#ffffff"
+          : "#000000",
+      minHeight: "100vh",
+      padding: "16px",
+    }}
+  >
+    <div
+      style={{
+        marginBottom: "16px",
+      }}
+    >
+      <Button
+        id="theme-toggle"
+        onClick={toggleTheme}
+      >
+        {theme === "light"
+          ? "Dark Mode"
+          : "Light Mode"}
+      </Button>
+    </div>
 
-      {showFilterBar && (
-        <FilterBar
-          filter={filter}
-          onFilterChange={setFilter}
-          sortOrder={sortOrder}
-          onSortChange={setSortOrder}
-          searchText={searchText}
-          onSearchChange={setSearchText}
-          onClearSearch={() => {
-            setSearchText("");
-            setDebouncedSearchText("");
-          }}
-          categories={categories}
-          selectedCategory={
-            selectedCategory
-          }
-          onCategoryChange={
-            setSelectedCategory
-          }
-        />
-      )}
+    {showForm && (
+      <TaskForm onAddTask={handleAddTask} />
+    )}
 
-      {isSearching &&
-        searchText !==
-          debouncedSearchText && (
-          <div id="searching-indicator">
-            Searching...
-          </div>
-        )}
+    {showFilterBar && (
+      <FilterBar
+        filter={filter}
+        onFilterChange={setFilter}
+        sortOrder={sortOrder}
+        onSortChange={setSortOrder}
+        searchText={searchText}
+        onSearchChange={setSearchText}
+        onClearSearch={() => {
+          setSearchText("");
+          setDebouncedSearchText("");
+        }}
+        categories={categories}
+        selectedCategory={
+          selectedCategory
+        }
+        onCategoryChange={
+          setSelectedCategory
+        }
+      />
+    )}
 
-     {showStatsPanel && (
-  <StatsPanel
-    total={stats.total}
-    completed={stats.completed}
-    active={stats.active}
-    overdue={stats.overdue}
-    completedPercentage={
-      stats.completedPercentage
-    }
-  />
-)}
-
-<div id="task-count">
-  Showing {sortedTasks.length} of{" "}
-  {tasks.length} tasks
-</div>
-
-      {sortedTasks.length === 0 ? (
-        <div id="filter-empty-message">
-          No tasks found
+    {isSearching &&
+      searchText !==
+        debouncedSearchText && (
+        <div id="searching-indicator">
+          Searching...
         </div>
-      ) : (
-        <TaskList
-          tasks={sortedTasks}
-          onToggle={handleToggle}
-          onDelete={onDelete}
-          onUpdateTask={handleUpdateTask}
-          editingId={editingId}
-          setEditingId={setEditingId}
-        />
       )}
-    </main>
-  );
+
+    {showStatsPanel && (
+      <StatsPanel
+        total={stats.total}
+        completed={stats.completed}
+        active={stats.active}
+        overdue={stats.overdue}
+        completedPercentage={
+          stats.completedPercentage
+        }
+      />
+    )}
+
+    <div id="task-count">
+      Showing {sortedTasks.length} of{" "}
+      {tasks.length} tasks
+    </div>
+
+    {sortedTasks.length === 0 ? (
+      <div id="filter-empty-message">
+        No tasks found
+      </div>
+    ) : (
+      <TaskList
+        tasks={sortedTasks}
+        onToggle={handleToggle}
+        onDelete={onDelete}
+        onUpdateTask={handleUpdateTask}
+        editingId={editingId}
+        setEditingId={setEditingId}
+      />
+    )}
+  </main>
+);
 }
