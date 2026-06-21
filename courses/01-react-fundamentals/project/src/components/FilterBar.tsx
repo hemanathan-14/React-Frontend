@@ -1,3 +1,4 @@
+
 type Filter = "all" | "active" | "completed";
 
 interface FilterBarProps {

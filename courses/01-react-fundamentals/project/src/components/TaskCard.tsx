@@ -1,3 +1,5 @@
+import Badge from "./Badge";
+import StatusIndicator from "./StatusIndicator";  
 interface TaskCardProps {
   id?: string | number;
   title: string;
@@ -100,10 +102,15 @@ export default function TaskCard({
         {description}
       </p>
 
-      <p>Priority: {priority}</p>
+      <div>
+          Priority: <Badge variant="priority">{priority}</Badge>
+      </div>
 
       <div id="task-category">
-        Category: {category}
+        Category:
+        <Badge variant="category">
+          {category}
+        </Badge>
       </div>
 
       <div id="task-tags">
@@ -133,42 +140,18 @@ export default function TaskCard({
           ).toLocaleDateString()}
 
           {isOverdue && (
-            <span
-              style={{
-                marginLeft: "8px",
-                color: "red",
-                fontWeight: "bold",
-              }}
-            >
-              Overdue
-            </span>
+            <StatusIndicator status="overdue" />
           )}
 
           {isDueToday &&
             !completed && (
-              <span
-                style={{
-                  marginLeft: "8px",
-                  color: "orange",
-                  fontWeight: "bold",
-                }}
-              >
-                Due Today
-              </span>
+              <StatusIndicator status="due-today" />
             )}
 
           {isDueSoon &&
             !isDueToday &&
             !completed && (
-              <span
-                style={{
-                  marginLeft: "8px",
-                  color: "blue",
-                  fontWeight: "bold",
-                }}
-              >
-                Due Soon
-              </span>
+              <StatusIndicator status="due-soon" />
             )}
         </div>
       )}
