@@ -8,6 +8,7 @@ import TaskDetailPage from './components/TaskDetailPage'
 import FetchDemoView from './components/FetchDemoView'
 import { ThemeProvider } from './contexts/ThemeContext'
 import type { Task } from './components/TaskList'
+import useLocalStorage from "./hooks/useLocalStorage";
 
 const INITIAL_TASKS: Task[] = [
   { id: 1, title: 'First Task', description: 'Description one', priority: 'High', completed: false, category: 'General', tags: [] },
@@ -18,42 +19,13 @@ const INITIAL_TASKS: Task[] = [
 ]
 
 function AppContent() {
-  const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS)
-
-useEffect(() => {
-  try {
-    const savedTasks = localStorage.getItem(
-      "task-app-tasks"
-    )
-
-    if (savedTasks) {
-      const parsedTasks = JSON.parse(
-        savedTasks
-      ) as Task[]
-
-      const normalizedTasks =
-        parsedTasks.map((task) => ({
-          ...task,
-          category:
-            task.category || "General",
-          tags: Array.isArray(task.tags)
-            ? task.tags
-            : [],
-        }))
-
-      setTasks(normalizedTasks)
-    }
-  } catch {
-    setTasks(INITIAL_TASKS)
-  }
-}, [])
-
-useEffect(() => {
-  localStorage.setItem(
+  const [tasks, setTasks] =
+  useLocalStorage<Task[]>(
     "task-app-tasks",
-    JSON.stringify(tasks)
-  )
-}, [tasks])
+    INITIAL_TASKS
+  );
+
+
 
   const handleDelete = (id: string | number) => {
      setTasks((prev) => prev.filter((t) => t.id !== id))

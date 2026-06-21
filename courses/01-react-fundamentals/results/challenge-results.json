@@ -5547,5 +5547,321 @@
       "maintainability": 90,
       "overall": "The code is well-structured and follows good practices, but there are some minor improvements that can be made to make it even better. The use of React Context API and TypeScript is a good choice, and the code is easy to read and maintain."
     }
+  },
+  {
+    "challengeId": "17-custom-hook-uselocalstorage",
+    "challengeName": "Custom Hook - useLocalStorage",
+    "timestamp": "2026-06-21T05:22:57.144Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 66,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 88
+    },
+    "totalScore": 93.10000000000001,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 17: Custom Hook - useLocalStorage"
+              ],
+              "fullName": " Challenge 17: Custom Hook - useLocalStorage App should render without crashing",
+              "status": "passed",
+              "title": "App should render without crashing",
+              "duration": 98,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1782019380928,
+          "endTime": 1782019381026,
+          "status": "passed",
+          "message": "",
+          "name": "D:/React-Frontend/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-17.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 66,
+      "passed": false,
+      "totalIssues": 5,
+      "errors": 3,
+      "warnings": 2,
+      "details": [
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\App.tsx",
+          "messages": [
+            {
+              "ruleId": "@typescript-eslint/no-unused-vars",
+              "severity": 2,
+              "message": "'useEffect' is defined but never used.",
+              "line": 2,
+              "column": 10,
+              "nodeType": "Identifier",
+              "messageId": "unusedVar",
+              "endLine": 2,
+              "endColumn": 19
+            },
+            {
+              "ruleId": "@typescript-eslint/no-unused-vars",
+              "severity": 2,
+              "message": "'useState' is defined but never used.",
+              "line": 2,
+              "column": 21,
+              "nodeType": "Identifier",
+              "messageId": "unusedVar",
+              "endLine": 2,
+              "endColumn": 29
+            }
+          ],
+          "suppressedMessages": [],
+          "errorCount": 2,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "source": "import './App.css'\r\nimport { useEffect, useState } from 'react'\r\nimport { BrowserRouter, Routes, Route } from 'react-router-dom'\r\nimport ChallengeList from './components/ChallengeList'\r\nimport TaskList from './components/TaskList'\r\nimport TaskApp from './components/TaskApp'\r\nimport TaskDetailPage from './components/TaskDetailPage'\r\nimport FetchDemoView from './components/FetchDemoView'\r\nimport { ThemeProvider } from './contexts/ThemeContext'\r\nimport type { Task } from './components/TaskList'\r\nimport useLocalStorage from \"./hooks/useLocalStorage\";\r\n\r\nconst INITIAL_TASKS: Task[] = [\r\n  { id: 1, title: 'First Task', description: 'Description one', priority: 'High', completed: false, category: 'General', tags: [] },\r\n  { id: 2, title: 'Second Task', description: 'Description two', priority: 'Medium', completed: false, category: 'Work', tags: [] },\r\n  { id: 3, title: 'Third Task', description: 'Description three', priority: 'Low', completed: false, category: 'Personal', tags: [] },\r\n  { id: 4, title: 'Fourth Task', description: 'Description four', priority: 'Medium', completed: false, category: 'General', tags: [] },\r\n  { id: 5, title: 'Fifth Task', description: 'Description five', priority: 'High', completed: false, category: 'Work', tags: [] },\r\n]\r\n\r\nfunction AppContent() {\r\n  const [tasks, setTasks] =\r\n  useLocalStorage<Task[]>(\r\n    \"task-app-tasks\",\r\n    INITIAL_TASKS\r\n  );\r\n\r\n\r\n\r\n  const handleDelete = (id: string | number) => {\r\n     setTasks((prev) => prev.filter((t) => t.id !== id))\r\n  }\r\n\r\n  return (\r\n    <BrowserRouter>\r\n      <div className=\"App\">\r\n        <main>\r\n          <Routes>\r\n            <Route path=\"/\" element={<ChallengeList />} />\r\n            <Route path=\"/challenge/01-static-task-display\" element={<TaskList />} />\r\n            <Route path=\"/challenge/02-dynamic-task-rendering\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm={false} countFormat=\"tasks\" />} />\r\n            <Route path=\"/challenge/03-adding-new-tasks\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" />} />\r\n            <Route path=\"/challenge/04-task-completion-toggle\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"completed\" />} />\r\n            <Route path=\"/challenge/05-task-deletion\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" onDelete={handleDelete} />} />\r\n            <Route path=\"/challenge/06-task-filtering\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" showFilterBar onDelete={handleDelete}/>} />\r\n            <Route path=\"/challenge/07-priority-based-sorting\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" showFilterBar onDelete={handleDelete} />} />\r\n            <Route path=\"/challenge/08-task-editing\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\"  onDelete={handleDelete} />} />\r\n            <Route path=\"/challenge/09-search-functionality\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" showFilterBar onDelete={handleDelete} />} />\r\n            <Route path=\"/challenge/10-useeffect-local-storage\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" onDelete={handleDelete} />} />\r\n            <Route path=\"/challenge/11-useeffect-debounced-search\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" showFilterBar onDelete={handleDelete} />} />\r\n            <Route path=\"/challenge/12-categories-and-tags\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" showFilterBar onDelete={handleDelete} />} />\r\n            <Route path=\"/challenge/13-due-dates-and-sorting\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" showFilterBar onDelete={handleDelete} />} />\r\n            <Route path=\"/challenge/14-task-statistics-dashboard\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" showStatsPanel onDelete={handleDelete} />} />\r\n            <Route path=\"/challenge/15-component-organization\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" onDelete={handleDelete} />} />\r\n            <Route path=\"/challenge/16-context-api-theme\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" />} />\r\n            <Route path=\"/challenge/17-custom-hook-uselocalstorage\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" />} />\r\n            <Route path=\"/challenge/18-usereducer-complex-state\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" />} />\r\n            <Route path=\"/challenge/19-performance-optimization\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" />} />\r\n            <Route path=\"/challenge/20-error-boundaries\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" />} />\r\n            <Route path=\"/challenge/21-react-router\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" linkToTaskDetail />} />\r\n            <Route path=\"/challenge/21-react-router/task/:id\" element={<TaskDetailPage />} />\r\n            <Route path=\"/challenge/22-data-fetching\" element={<FetchDemoView />} />\r\n            <Route path=\"/challenge/23-useref-focus-management\" element={<TaskApp tasks={tasks} setTasks={setTasks} showForm countFormat=\"tasks\" showFilterBar />} />\r\n          </Routes>\r\n        </main>\r\n      </div>\r\n    </BrowserRouter>\r\n  )\r\n}\r\n\r\nfunction App() {\r\n  return (\r\n    <ThemeProvider>\r\n      <AppContent />\r\n    </ThemeProvider>\r\n  )\r\n}\r\n\r\nexport default App",
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\contexts\\ThemeContext.tsx",
+          "messages": [
+            {
+              "ruleId": "@typescript-eslint/no-unused-vars",
+              "severity": 2,
+              "message": "'useState' is defined but never used.",
+              "line": 5,
+              "column": 3,
+              "nodeType": "Identifier",
+              "messageId": "unusedVar",
+              "endLine": 5,
+              "endColumn": 11
+            },
+            {
+              "ruleId": "react-refresh/only-export-components",
+              "severity": 1,
+              "message": "Fast refresh only works when a file only exports components. Move your React context(s) to a separate file.",
+              "line": 18,
+              "column": 14,
+              "nodeType": "Identifier",
+              "messageId": "reactContext",
+              "endLine": 18,
+              "endColumn": 26
+            },
+            {
+              "ruleId": "react-refresh/only-export-components",
+              "severity": 1,
+              "message": "Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components.",
+              "line": 71,
+              "column": 17,
+              "nodeType": "Identifier",
+              "messageId": "namedExport",
+              "endLine": 71,
+              "endColumn": 25
+            }
+          ],
+          "suppressedMessages": [],
+          "errorCount": 1,
+          "fatalErrorCount": 0,
+          "warningCount": 2,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "source": "import {\r\n  createContext,\r\n  useContext,\r\n  useEffect,\r\n  useState,\r\n  type ReactNode,\r\n} from \"react\";\r\nimport useLocalStorage from \"../hooks/useLocalStorage\";\r\n\r\nexport type Theme = \"light\" | \"dark\";\r\n\r\nexport interface ThemeContextValue {\r\n  theme: Theme;\r\n  setTheme: (theme: Theme) => void;\r\n  toggleTheme: () => void;\r\n}\r\n\r\nexport const ThemeContext =\r\n  createContext<ThemeContextValue | null>(\r\n    null\r\n  );\r\n\r\nexport function ThemeProvider({\r\n  children,\r\n}: {\r\n  children: ReactNode;\r\n}) {\r\n  const [theme, setThemeState] =\r\n  useLocalStorage<Theme>(\r\n    \"task-app-theme\",\r\n    \"light\"\r\n  );\r\n\r\n  useEffect(() => {\r\n    localStorage.setItem(\r\n      \"task-app-theme\",\r\n      theme\r\n    );\r\n\r\n    document.documentElement.setAttribute(\r\n      \"data-theme\",\r\n      theme\r\n    );\r\n  }, [theme]);\r\n\r\n  function setTheme(theme: Theme) {\r\n    setThemeState(theme);\r\n  }\r\n\r\n  function toggleTheme() {\r\n    setThemeState((prev) =>\r\n      prev === \"light\"\r\n        ? \"dark\"\r\n        : \"light\"\r\n    );\r\n  }\r\n\r\n  return (\r\n    <ThemeContext.Provider\r\n      value={{\r\n        theme,\r\n        setTheme,\r\n        toggleTheme,\r\n      }}\r\n    >\r\n      {children}\r\n    </ThemeContext.Provider>\r\n  );\r\n}\r\n\r\nexport function useTheme(): ThemeContextValue {\r\n  const ctx =\r\n    useContext(ThemeContext);\r\n\r\n  if (!ctx) {\r\n    throw new Error(\r\n      \"useTheme must be used within ThemeProvider\"\r\n    );\r\n  }\r\n\r\n  return ctx;\r\n}",
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\hooks\\useLocalStorage.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent",
+        "customHook"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/hooks/useLocalStorage.ts",
+          "patternsFound": [],
+          "patternsMissing": [
+            "functionalComponent",
+            "customHook"
+          ]
+        },
+        {
+          "file": "src/App.tsx",
+          "patternsFound": [
+            "functionalComponent",
+            "customHook"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/contexts/ThemeContext.tsx",
+          "patternsFound": [
+            "functionalComponent"
+          ],
+          "patternsMissing": [
+            "customHook"
+          ]
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-17.spec.ts",
+          "file": "challenge-17.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 17: Custom Hook useLocalStorage - E2E",
+              "file": "challenge-17.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display task list",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 423,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-21T05:23:11.698Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "10801a4643fac957b65b-21592ac323f744497a60",
+                  "file": "challenge-17.spec.ts",
+                  "line": 8,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "17-custom-hook-uselocalstorage",
+      "timestamp": "2026-06-21T05:23:12.965Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript and functional components is a good practice.",
+        "The use of a custom hook for local storage is a great way to encapsulate logic and make the code more reusable."
+      ],
+      "improvements": [
+        "In the `useLocalStorage` hook, the error handling in the `try` block can be improved by providing a more informative error message or logging the error for debugging purposes.",
+        "In the `ThemeProvider`, the `useEffect` hook is used to update the local storage and the document's `data-theme` attribute. However, this can be optimized by using a single `useEffect` hook with a dependency array that includes both `theme` and `document.documentElement`.",
+        "In the `AppContent` component, the `handleDelete` function can be simplified by using the `filter` method with a callback function that returns `true` if the task's ID is not equal to the deleted ID."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and follows good practices. However, there are some areas for improvement, such as error handling and optimization of the `useEffect` hook. With some minor adjustments, the code can be even more maintainable and efficient."
+    },
+    "aiResults": {
+      "challengeId": "17-custom-hook-uselocalstorage",
+      "timestamp": "2026-06-21T05:23:12.965Z",
+      "score": 88,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and follows a consistent naming convention.",
+        "The use of TypeScript and functional components is a good practice.",
+        "The use of a custom hook for local storage is a great way to encapsulate logic and make the code more reusable."
+      ],
+      "improvements": [
+        "In the `useLocalStorage` hook, the error handling in the `try` block can be improved by providing a more informative error message or logging the error for debugging purposes.",
+        "In the `ThemeProvider`, the `useEffect` hook is used to update the local storage and the document's `data-theme` attribute. However, this can be optimized by using a single `useEffect` hook with a dependency array that includes both `theme` and `document.documentElement`.",
+        "In the `AppContent` component, the `handleDelete` function can be simplified by using the `filter` method with a callback function that returns `true` if the task's ID is not equal to the deleted ID."
+      ],
+      "readability": 85,
+      "maintainability": 90,
+      "overall": "The code is well-structured and follows good practices. However, there are some areas for improvement, such as error handling and optimization of the `useEffect` hook. With some minor adjustments, the code can be even more maintainable and efficient."
+    }
   }
 ]

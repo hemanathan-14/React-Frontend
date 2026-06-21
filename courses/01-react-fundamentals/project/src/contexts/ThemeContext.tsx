@@ -5,6 +5,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export type Theme = "light" | "dark";
 
@@ -25,16 +26,10 @@ export function ThemeProvider({
   children: ReactNode;
 }) {
   const [theme, setThemeState] =
-    useState<Theme>(() => {
-      const saved =
-        localStorage.getItem(
-          "task-app-theme"
-        );
-
-      return saved === "dark"
-        ? "dark"
-        : "light";
-    });
+  useLocalStorage<Theme>(
+    "task-app-theme",
+    "light"
+  );
 
   useEffect(() => {
     localStorage.setItem(
