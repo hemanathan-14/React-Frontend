@@ -1,4 +1,6 @@
 import TaskCard from "./TaskCard";
+import ErrorBoundary from "./ErrorBoundary";
+
 
 export interface Task {
   id: string | number;
@@ -80,7 +82,6 @@ export default function TaskList({
           {countText}
         </div>
       )}
-
       <section id="task-list">
         {tasks.map((task) => (
           <TaskCard

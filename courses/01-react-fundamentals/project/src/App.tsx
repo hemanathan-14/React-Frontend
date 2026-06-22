@@ -16,6 +16,7 @@ import { deleteTask } from "./reducers/taskActions";
 import useLocalStorage from "./hooks/useLocalStorage";
 
 
+
 const INITIAL_TASKS: Task[] = [
   { id: 1, title: 'First Task', description: 'Description one', priority: 'High', completed: false, category: 'General', tags: [] },
   { id: 2, title: 'Second Task', description: 'Description two', priority: 'Medium', completed: false, category: 'Work', tags: [] },
@@ -42,7 +43,7 @@ const handleDelete = useCallback(
   return (
     <BrowserRouter>
       <div className="App">
-        <main>
+        <div>
           <Routes>
             <Route path="/" element={<ChallengeList />} />
             <Route path="/challenge/01-static-task-display" element={<TaskList />} />
@@ -70,7 +71,7 @@ const handleDelete = useCallback(
             <Route path="/challenge/22-data-fetching" element={<FetchDemoView />} />
             <Route path="/challenge/23-useref-focus-management" element={<TaskApp tasks={tasks} dispatch={dispatch} showForm countFormat="tasks" showFilterBar />} />
           </Routes>
-        </main>
+        </div>
       </div>
     </BrowserRouter>
   )

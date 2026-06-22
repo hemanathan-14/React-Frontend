@@ -6501,5 +6501,297 @@
       "maintainability": 90,
       "overall": "The code is well-structured and maintainable, with a good balance of complexity and readability. However, there are some areas for improvement, particularly in terms of function complexity and testing. With some refactoring and additional testing, this code has the potential to be even more robust and scalable."
     }
+  },
+  {
+    "challengeId": "20-error-boundaries",
+    "challengeName": "Error Boundaries and Error Handling",
+    "timestamp": "2026-06-22T07:25:01.626Z",
+    "scores": {
+      "functionalTests": 75,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 83
+    },
+    "totalScore": 88.7,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 75,
+      "passed": false,
+      "totalTests": 4,
+      "passedTests": 3,
+      "failedTests": 1,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 20: Error Boundaries and Error Handling"
+              ],
+              "fullName": " Challenge 20: Error Boundaries and Error Handling ErrorBoundary should render children when no error",
+              "status": "passed",
+              "title": "ErrorBoundary should render children when no error",
+              "duration": 20,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 20: Error Boundaries and Error Handling"
+              ],
+              "fullName": " Challenge 20: Error Boundaries and Error Handling ErrorBoundary should have fallback with id=\"error-boundary-fallback\" when error caught",
+              "status": "failed",
+              "title": "ErrorBoundary should have fallback with id=\"error-boundary-fallback\" when error caught",
+              "duration": 28,
+              "failureMessages": [
+                "Found multiple elements with the text: /something went wrong/i\n\nHere are the matching elements:\n\nIgnored nodes: comments, script, style\n\u001b[36m<h2>\u001b[39m\n  \u001b[0mSomething went wrong\u001b[0m\n\u001b[36m</h2>\u001b[39m\n\nIgnored nodes: comments, script, style\n\u001b[36m<p>\u001b[39m\n  \u001b[0mSomething went wrong. Please try again.\u001b[0m\n\u001b[36m</p>\u001b[39m\n\n(If this is intentional, then use the `*AllBy*` variant of the query (like `queryAllByText`, `getAllByText`, or `findAllByText`)).\n\nIgnored nodes: comments, script, style\n\u001b[36m<body>\u001b[39m\n  \u001b[36m<div>\u001b[39m\n    \u001b[36m<div\u001b[39m\n      \u001b[33mid\u001b[39m=\u001b[32m\"error-boundary-fallback\"\u001b[39m\n    \u001b[36m>\u001b[39m\n      \u001b[36m<h2>\u001b[39m\n        \u001b[0mSomething went wrong\u001b[0m\n      \u001b[36m</h2>\u001b[39m\n      \u001b[36m<p>\u001b[39m\n        \u001b[0mSomething went wrong. Please try again.\u001b[0m\n      \u001b[36m</p>\u001b[39m\n      \u001b[36m<button\u001b[39m\n        \u001b[33mid\u001b[39m=\u001b[32m\"error-retry\"\u001b[39m\n      \u001b[36m>\u001b[39m\n        \u001b[0mRetry\u001b[0m\n      \u001b[36m</button>\u001b[39m\n    \u001b[36m</div>\u001b[39m\n  \u001b[36m</div>\u001b[39m\n\u001b[36m</body>\u001b[39m"
+              ],
+              "location": {
+                "line": 37,
+                "column": 19
+              }
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 20: Error Boundaries and Error Handling"
+              ],
+              "fullName": " Challenge 20: Error Boundaries and Error Handling ErrorBoundary should have Retry button with id=\"error-retry\"",
+              "status": "passed",
+              "title": "ErrorBoundary should have Retry button with id=\"error-retry\"",
+              "duration": 5,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 20: Error Boundaries and Error Handling"
+              ],
+              "fullName": " Challenge 20: Error Boundaries and Error Handling Retry button should be clickable",
+              "status": "passed",
+              "title": "Retry button should be clickable",
+              "duration": 101,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1782113106894,
+          "endTime": 1782113107048,
+          "status": "failed",
+          "message": "",
+          "name": "D:/React-Frontend/challenge-engine-react/courses/01-react-fundamentals/project/tests/challenge-20.test.tsx"
+        }
+      ],
+      "error": "Command failed: npm test -- D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\tests\\challenge-20.test.tsx --run --reporter=json"
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\components\\ErrorBoundary.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\components\\TaskApp.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\01-react-fundamentals\\project\\src\\hooks\\useLocalStorage.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "functionalComponent"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/components/ErrorBoundary.tsx",
+          "patternsFound": [],
+          "patternsMissing": [
+            "functionalComponent"
+          ]
+        },
+        {
+          "file": "src/components/TaskApp.tsx",
+          "patternsFound": [
+            "functionalComponent"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/hooks/useLocalStorage.ts",
+          "patternsFound": [],
+          "patternsMissing": [
+            "functionalComponent"
+          ]
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-20.spec.ts",
+          "file": "challenge-20.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 20: Error Boundaries - E2E",
+              "file": "challenge-20.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should display task list or main content",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 326,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-06-22T07:25:16.206Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1d641d769955c6bc30c0-ac7bb770a40f47a29acf",
+                  "file": "challenge-20.spec.ts",
+                  "line": 8,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "20-error-boundaries",
+      "timestamp": "2026-06-22T07:25:17.236Z",
+      "score": 83,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear and concise variable names and function signatures.",
+        "The use of TypeScript and React hooks is well-implemented, making the code more maintainable and efficient.",
+        "The error handling mechanism is robust and catches rendering errors, providing a fallback UI and a retry button."
+      ],
+      "improvements": [
+        "Some of the variable names could be more descriptive, especially in the `useLocalStorage` hook. For example, `storedValue` could be renamed to `initialValue` to better reflect its purpose.",
+        "The `componentDidCatch` method in the `ErrorBoundary` component could be improved by logging the error in production mode, rather than only in development mode.",
+        "The `useMemo` hook is used extensively in the `TaskApp` component. While it's a good practice to memoize expensive computations, some of the dependencies could be optimized to reduce the number of re-renders."
+      ],
+      "readability": 80,
+      "maintainability": 85,
+      "overall": "The code is well-structured and maintainable, with a robust error handling mechanism. However, there are some minor improvements that could be made to further enhance readability and performance."
+    },
+    "aiResults": {
+      "challengeId": "20-error-boundaries",
+      "timestamp": "2026-06-22T07:25:17.236Z",
+      "score": 83,
+      "feedback": [],
+      "strengths": [
+        "The code is well-structured and easy to follow, with clear and concise variable names and function signatures.",
+        "The use of TypeScript and React hooks is well-implemented, making the code more maintainable and efficient.",
+        "The error handling mechanism is robust and catches rendering errors, providing a fallback UI and a retry button."
+      ],
+      "improvements": [
+        "Some of the variable names could be more descriptive, especially in the `useLocalStorage` hook. For example, `storedValue` could be renamed to `initialValue` to better reflect its purpose.",
+        "The `componentDidCatch` method in the `ErrorBoundary` component could be improved by logging the error in production mode, rather than only in development mode.",
+        "The `useMemo` hook is used extensively in the `TaskApp` component. While it's a good practice to memoize expensive computations, some of the dependencies could be optimized to reduce the number of re-renders."
+      ],
+      "readability": 80,
+      "maintainability": 85,
+      "overall": "The code is well-structured and maintainable, with a robust error handling mechanism. However, there are some minor improvements that could be made to further enhance readability and performance."
+    }
   }
 ]

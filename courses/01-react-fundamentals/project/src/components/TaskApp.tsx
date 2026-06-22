@@ -12,6 +12,7 @@ import StatsPanel from "./StatsPanel";
 import Button from "./Button";
 import { useTheme } from "../contexts/ThemeContext";
 import type { TaskAction } from "../reducers/taskReducer";
+import ErrorBoundary from "./ErrorBoundary";
 
 
 import {
@@ -269,7 +270,7 @@ const sortedTasks = useMemo(() => {
   useTheme();
 
   return (
-  <main
+  <div
     data-theme={theme}
     style={{
       backgroundColor:
@@ -352,6 +353,7 @@ const sortedTasks = useMemo(() => {
         No tasks found
       </div>
     ) : (
+    <ErrorBoundary>
       <TaskList
         tasks={sortedTasks}
         onToggle={handleToggle}
@@ -360,7 +362,8 @@ const sortedTasks = useMemo(() => {
         editingId={editingId}
         setEditingId={setEditingId}
       />
+    </ErrorBoundary>
     )}
-  </main>
+  </div>
 );
 }

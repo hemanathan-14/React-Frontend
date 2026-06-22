@@ -26,24 +26,27 @@ export default function useLocalStorage<T>(
     });
 
   const setValue: React.Dispatch<
-    React.SetStateAction<T>
-  > = (value) => {
-    try {
-      const valueToStore =
-        value instanceof Function
-          ? value(storedValue)
-          : value;
+  React.SetStateAction<T>
+> = (value) => {
+  const valueToStore =
+    value instanceof Function
+      ? value(storedValue)
+      : value;
 
-      setStoredValue(valueToStore);
+  setStoredValue(valueToStore);
 
-      localStorage.setItem(
-        key,
-        JSON.stringify(valueToStore)
-      );
-    } catch {
-      // ignore errors
-    }
-  };
+  try {
+    const serialized =
+      JSON.stringify(valueToStore);
+
+    localStorage.setItem(
+      key,
+      serialized
+    );
+  } catch {
+    // ignore errors
+  }
+};
 
   return [storedValue, setValue];
 }
