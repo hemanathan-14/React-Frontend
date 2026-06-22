@@ -1,5 +1,7 @@
 import TaskCard from "./TaskCard";
-import ErrorBoundary from "./ErrorBoundary";
+
+
+
 
 
 export interface Task {
@@ -71,9 +73,7 @@ export default function TaskList({
   countText,
   onToggle,
   onDelete,
-  onUpdateTask,
-  editingId,
-  setEditingId,
+  linkToTaskDetail,
 }: TaskListProps) {
   return (
     <>
@@ -96,6 +96,7 @@ export default function TaskList({
             dueDate={task.dueDate}
             onToggle={onToggle}
             onDelete={onDelete}
+            linkToTaskDetail={linkToTaskDetail}
           />
         ))}
       </section>

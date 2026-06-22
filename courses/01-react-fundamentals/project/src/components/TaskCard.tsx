@@ -1,18 +1,18 @@
 import Badge from "./Badge";
-import StatusIndicator from "./StatusIndicator";  
+import StatusIndicator from "./StatusIndicator";
+import { Link } from "react-router-dom";
 import React from "react";
+
 interface TaskCardProps {
   id?: string | number;
   title: string;
   description: string;
   priority: string;
   completed?: boolean;
-
   category?: string;
   tags?: string[];
-
   dueDate?: string | number;
-
+  linkToTaskDetail?: boolean;
   onToggle?: (id: string | number) => void;
   onDelete?: (id: string | number) => void;
 }
@@ -26,41 +26,33 @@ function TaskCard({
   category = "General",
   tags = [],
   dueDate,
+  linkToTaskDetail = false,
   onToggle,
   onDelete,
 }: TaskCardProps) {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const due = dueDate
-    ? new Date(dueDate)
-    : null;
+  const due = dueDate ? new Date(dueDate) : null;
 
   if (due) {
     due.setHours(0, 0, 0, 0);
   }
 
   const isOverdue =
-    !!due &&
-    due.getTime() < today.getTime() &&
-    !completed;
+    !!due && due.getTime() < today.getTime() && !completed;
 
   const isDueToday =
-    !!due &&
-    due.getTime() === today.getTime();
+    !!due && due.getTime() === today.getTime();
 
   const daysUntilDue = due
     ? Math.ceil(
-        (due.getTime() -
-          today.getTime()) /
-          (1000 * 60 * 60 * 24)
+        (due.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
       )
     : null;
 
   const isDueSoon =
-    daysUntilDue !== null &&
-    daysUntilDue > 0 &&
-    daysUntilDue <= 3;
+    daysUntilDue !== null && daysUntilDue > 0 && daysUntilDue <= 3;
 
   return (
     <article
@@ -85,33 +77,33 @@ function TaskCard({
 
       <h2
         style={{
-          textDecoration: completed
-            ? "line-through"
-            : "none",
+          textDecoration: completed ? "line-through" : "none",
         }}
       >
-        {title}
+        {linkToTaskDetail && id != null ? (
+          <Link to={`/challenge/21-react-router/task/${id}`}>
+            {title}
+          </Link>
+        ) : (
+          title
+        )}
       </h2>
 
       <p
         style={{
-          textDecoration: completed
-            ? "line-through"
-            : "none",
+          textDecoration: completed ? "line-through" : "none",
         }}
       >
         {description}
       </p>
 
       <div>
-          Priority: <Badge variant="priority">{priority}</Badge>
+        Priority: <Badge variant="priority">{priority}</Badge>
       </div>
 
       <div id="task-category">
         Category:
-        <Badge variant="category">
-          {category}
-        </Badge>
+        <Badge variant="category">{category}</Badge>
       </div>
 
       <div id="task-tags">
@@ -135,36 +127,24 @@ function TaskCard({
 
       {dueDate && (
         <div id="task-due-date">
-          Due:{" "}
-          {new Date(
-            dueDate
-          ).toLocaleDateString()}
+          Due: {new Date(dueDate).toLocaleDateString()}
 
-          {isOverdue && (
-            <StatusIndicator status="overdue" />
+          {isOverdue && <StatusIndicator status="overdue" />}
+
+          {isDueToday && !completed && (
+            <StatusIndicator status="due-today" />
           )}
 
-          {isDueToday &&
-            !completed && (
-              <StatusIndicator status="due-today" />
-            )}
-
-          {isDueSoon &&
-            !isDueToday &&
-            !completed && (
-              <StatusIndicator status="due-soon" />
-            )}
+          {isDueSoon && !isDueToday && !completed && (
+            <StatusIndicator status="due-soon" />
+          )}
         </div>
       )}
 
       {onDelete && (
         <button
           onClick={() => {
-            const confirmed =
-              window.confirm(
-                "Are you sure?"
-              );
-
+            const confirmed = window.confirm("Are you sure?");
             if (confirmed) {
               onDelete(id!);
             }
@@ -176,4 +156,5 @@ function TaskCard({
     </article>
   );
 }
+
 export default React.memo(TaskCard);
