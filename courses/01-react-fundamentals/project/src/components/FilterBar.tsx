@@ -1,54 +1,64 @@
+import { useRef, useEffect } from "react";
 
 type Filter = "all" | "active" | "completed";
 
 interface FilterBarProps {
-  filter: Filter;
-  onFilterChange: (filter: Filter) => void;
+  filter?: Filter;
+  onFilterChange?: (filter: Filter) => void;
 
-  sortOrder: string;
-  onSortChange: (value: string) => void;
+  sortOrder?: string;
+  onSortChange?: (value: string) => void;
 
-  searchText: string;
-  onSearchChange: (value: string) => void;
-  onClearSearch: () => void;
+  searchText?: string;
+  searchQuery?: string;
+  onSearchChange?: (value: string) => void;
+  onClearSearch?: () => void;
 
-  // Challenge 12
-  categories: string[];
-  selectedCategory: string;
-  onCategoryChange: (value: string) => void;
+  categories?: string[];
+  selectedCategory?: string;
+  onCategoryChange?: (value: string) => void;
 }
 
 export default function FilterBar({
-  filter,
+  filter = "all",
   onFilterChange,
-  sortOrder,
+  sortOrder = "recent",
   onSortChange,
   searchText,
+  searchQuery,
   onSearchChange,
   onClearSearch,
-  categories,
-  selectedCategory,
+  categories = [],
+  selectedCategory = "All categories",
   onCategoryChange,
 }: FilterBarProps) {
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    searchInputRef.current?.focus();
+  }, []);
+
+  const currentSearch = searchText ?? searchQuery ?? "";
+
   return (
     <div id="filter-bar">
       <button
         data-active={filter === "all"}
-        onClick={() => onFilterChange("all")}
+        onClick={() => onFilterChange?.("all")}
       >
         All
       </button>
 
       <button
         data-active={filter === "active"}
-        onClick={() => onFilterChange("active")}
+        onClick={() => onFilterChange?.("active")}
       >
         Active
       </button>
 
       <button
         data-active={filter === "completed"}
-        onClick={() => onFilterChange("completed")}
+        onClick={() => onFilterChange?.("completed")}
       >
         Completed
       </button>
@@ -56,44 +66,22 @@ export default function FilterBar({
       <select
         id="sort-order"
         value={sortOrder}
-        onChange={(e) =>
-          onSortChange(e.target.value)
-        }
+        onChange={(e) => onSortChange?.(e.target.value)}
       >
-        <option value="recent">
-          Recently Added
-        </option>
-
-        <option value="high">
-          Priority: High to Low
-        </option>
-
-        <option value="low">
-          Priority: Low to High
-        </option>
-
-        <option value="alphabetical">
-          Alphabetical
-        </option>
+        <option value="recent">Recently Added</option>
+        <option value="high">Priority: High to Low</option>
+        <option value="low">Priority: Low to High</option>
+        <option value="alphabetical">Alphabetical</option>
       </select>
 
-      {/* Category Filter */}
       <select
         id="category-filter"
         value={selectedCategory}
-        onChange={(e) =>
-          onCategoryChange(e.target.value)
-        }
+        onChange={(e) => onCategoryChange?.(e.target.value)}
       >
-        <option value="All categories">
-          All categories
-        </option>
-
+        <option value="All categories">All categories</option>
         {categories.map((category) => (
-          <option
-            key={category}
-            value={category}
-          >
+          <option key={category} value={category}>
             {category}
           </option>
         ))}
@@ -101,19 +89,15 @@ export default function FilterBar({
 
       <input
         id="search-input"
+        ref={searchInputRef}
         type="text"
         placeholder="Search tasks..."
-        value={searchText}
-        onChange={(e) =>
-          onSearchChange(e.target.value)
-        }
+        value={currentSearch}
+        onChange={(e) => onSearchChange?.(e.target.value)}
       />
 
-      {searchText && (
-        <button
-          id="clear-search"
-          onClick={onClearSearch}
-        >
+      {currentSearch && (
+        <button id="clear-search" onClick={onClearSearch}>
           Clear search
         </button>
       )}
