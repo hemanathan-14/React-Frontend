@@ -201,5 +201,29 @@
       "overall": "The code meets most of the requirements and follows RTK Query best practices. However, there are some minor improvements that can be made to enhance maintainability and readability.",
       "requirementCompliance": 90
     }
+  },
+  {
+    "challengeId": "09-mutations",
+    "challengeName": "Mutations with useMutation",
+    "aiReview": {
+      "challengeId": "09-mutations",
+      "timestamp": "2026-07-12T18:22:27.837Z",
+      "score": 86,
+      "feedback": [],
+      "strengths": [
+        "Correct implementation of RTK Query and Redux Toolkit",
+        "Proper use of TypeScript and interfaces",
+        "Well-structured code with logical separation of concerns"
+      ],
+      "improvements": [
+        "In `src/api/apiSlice.ts`, consider using `createApi` with `baseQuery` and `tagTypes` for better organization and reusability. (Improvement score: 8/10)",
+        "In `src/components/AddPostForm.tsx`, consider using `useForm` from `react-hook-form` for better form management and validation. (Improvement score: 7/10)",
+        "In `src/components/UsersList.tsx`, consider using `useMemo` to memoize the users list and improve performance. (Improvement score: 6/10)"
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code meets most requirements and demonstrates good understanding of RTK Query and Redux Toolkit. However, there are some areas for improvement to enhance maintainability and performance.",
+      "requirementCompliance": 90
+    }
   }
 ]

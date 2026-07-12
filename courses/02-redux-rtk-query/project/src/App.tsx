@@ -4,7 +4,7 @@ import ChallengeList from './components/ChallengeList'
 import CounterView from './components/CounterView'
 import UsersList from './components/UsersList'
 import PostsList from './components/PostsList'
-import AddPostForm from './components/AddPostForm'
+import { AddPostForm } from './components/AddPostForm';
 import PostsWithFilters from './components/PostsWithFilters'
 import PostDetail from './components/PostDetail'
 

@@ -1,9 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { mockApi } from './mockServer';
 
-// User type
 export interface User {
   id: string;
+  name: string;
+  email: string;
+}
+
+export interface NewUser {
   name: string;
   email: string;
 }
@@ -13,12 +17,8 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: '/',
   }),
-
-  // Required for Challenge 08
   tagTypes: ['User'],
-
   endpoints: (builder) => ({
-    // Query
     getUsers: builder.query<User[], void>({
       queryFn: async () => {
         try {
@@ -36,40 +36,22 @@ export const apiSlice = createApi({
           };
         }
       },
-
-      // Required for caching
       providesTags: (result) =>
         result
           ? [
-              ...result.map((user) => ({
+              ...result.map(({ id }) => ({
                 type: 'User' as const,
-                id: user.id,
+                id,
               })),
-              { type: 'User' as const, id: 'LIST' },
+              { type: 'User', id: 'LIST' },
             ]
-          : [{ type: 'User' as const, id: 'LIST' }],
+          : [{ type: 'User', id: 'LIST' }],
     }),
-
-    // Mutation (required by Challenge 08)
-    addUser: builder.mutation<User, Omit<User, 'id'>>({
+    addUser: builder.mutation<User, NewUser>({
       queryFn: async (newUser) => {
         try {
-          // If your mockApi has addUser(), use it.
-          if ('addUser' in mockApi) {
-            const createdUser = await (mockApi as typeof mockApi & {
-              addUser: (user: Omit<User, 'id'>) => Promise<User>;
-            }).addUser(newUser);
-
-            return { data: createdUser };
-          }
-
-          // Temporary fallback so the architecture review detects a mutation
-          return {
-            data: {
-              id: Date.now().toString(),
-              ...newUser,
-            },
-          };
+          const createdUser = await mockApi.addUser(newUser);
+          return { data: createdUser };
         } catch (error: unknown) {
           return {
             error: {
@@ -82,14 +64,9 @@ export const apiSlice = createApi({
           };
         }
       },
-
-      // Required for cache invalidation
       invalidatesTags: [{ type: 'User', id: 'LIST' }],
     }),
   }),
 });
 
-export const {
-  useGetUsersQuery,
-  useAddUserMutation,
-} = apiSlice;
+export const { useGetUsersQuery, useAddUserMutation } = apiSlice;
