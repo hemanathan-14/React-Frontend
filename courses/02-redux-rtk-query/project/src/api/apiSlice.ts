@@ -47,6 +47,7 @@ export const apiSlice = createApi({
             ]
           : [{ type: 'User', id: 'LIST' }],
     }),
+
     addUser: builder.mutation<User, NewUser>({
       queryFn: async (newUser) => {
         try {
@@ -65,6 +66,24 @@ export const apiSlice = createApi({
         }
       },
       invalidatesTags: [{ type: 'User', id: 'LIST' }],
+
+      // Optimistic update: patch the getUsers cache immediately,
+      // roll back if the mutation fails.
+      async onQueryStarted(newUser, { dispatch, queryFulfilled }) {
+        const tempId = `temp-${Date.now()}`;
+
+        const patchResult = dispatch(
+          apiSlice.util.updateQueryData('getUsers', undefined, (draft) => {
+            draft.push({ id: tempId, ...newUser });
+          }),
+        );
+
+        try {
+          await queryFulfilled;
+        } catch {
+          patchResult.undo();
+        }
+      },
     }),
   }),
 });

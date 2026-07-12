@@ -3038,5 +3038,223 @@
       "overall": "The code meets most requirements and demonstrates good understanding of RTK Query and Redux Toolkit. However, there are some areas for improvement to enhance maintainability and performance.",
       "requirementCompliance": 90
     }
+  },
+  {
+    "challengeId": "10-optimistic-updates",
+    "challengeName": "Optimistic Updates",
+    "timestamp": "2026-07-12T18:30:59.881Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 86
+    },
+    "totalScore": 97.9,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 10: Optimistic Updates"
+              ],
+              "fullName": " Challenge 10: Optimistic Updates API slice mutation has onQueryStarted",
+              "status": "passed",
+              "title": "API slice mutation has onQueryStarted",
+              "duration": 2,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 10: Optimistic Updates"
+              ],
+              "fullName": " Challenge 10: Optimistic Updates optimistic update uses queryFulfilled or updateQueryData",
+              "status": "passed",
+              "title": "optimistic update uses queryFulfilled or updateQueryData",
+              "duration": 0,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 10: Optimistic Updates"
+              ],
+              "fullName": " Challenge 10: Optimistic Updates has rollback or undo on error",
+              "status": "passed",
+              "title": "has rollback or undo on error",
+              "duration": 1,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1783881063666,
+          "endTime": 1783881063669,
+          "status": "passed",
+          "message": "",
+          "name": "D:/React-Frontend/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-10.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\api\\apiSlice.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/api/apiSlice.ts",
+          "patternsFound": [],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 1,
+      "passedTests": 1,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-10.spec.ts",
+          "file": "challenge-10.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 10: Optimistic Updates - E2E",
+              "file": "challenge-10.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should load challenge 10 page with content",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 470,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-12T18:31:15.209Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "2b6a150d93e258235d20-c73851f46778bc6eb125",
+                  "file": "challenge-10.spec.ts",
+                  "line": 8,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "10-optimistic-updates",
+      "timestamp": "2026-07-12T18:31:16.491Z",
+      "score": 86,
+      "feedback": [],
+      "strengths": [
+        "Correct implementation of optimistic updates using `onQueryStarted` and `updateQueryData`.",
+        "Proper use of TypeScript types and interfaces.",
+        "Logical structure and separation of concerns in the code."
+      ],
+      "improvements": [
+        "In `src/api/apiSlice.ts`, the `onQueryStarted` function can be simplified by removing the `tempId` variable and directly using `patchResult.undo()` in the catch block.",
+        "In `src/api/mockServer.ts`, consider adding more test data for users and posts to make the mock API more robust.",
+        "In `src/api/apiSlice.ts`, consider adding a check for `queryFulfilled` being a promise before calling `patchResult.undo()` to avoid potential errors."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code meets most functional requirements and demonstrates good understanding of RTK Query best practices. However, there are some minor improvements that can be made to enhance maintainability and readability.",
+      "requirementCompliance": 90
+    },
+    "aiResults": {
+      "challengeId": "10-optimistic-updates",
+      "timestamp": "2026-07-12T18:31:16.491Z",
+      "score": 86,
+      "feedback": [],
+      "strengths": [
+        "Correct implementation of optimistic updates using `onQueryStarted` and `updateQueryData`.",
+        "Proper use of TypeScript types and interfaces.",
+        "Logical structure and separation of concerns in the code."
+      ],
+      "improvements": [
+        "In `src/api/apiSlice.ts`, the `onQueryStarted` function can be simplified by removing the `tempId` variable and directly using `patchResult.undo()` in the catch block.",
+        "In `src/api/mockServer.ts`, consider adding more test data for users and posts to make the mock API more robust.",
+        "In `src/api/apiSlice.ts`, consider adding a check for `queryFulfilled` being a promise before calling `patchResult.undo()` to avoid potential errors."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code meets most functional requirements and demonstrates good understanding of RTK Query best practices. However, there are some minor improvements that can be made to enhance maintainability and readability.",
+      "requirementCompliance": 90
+    }
   }
 ]
