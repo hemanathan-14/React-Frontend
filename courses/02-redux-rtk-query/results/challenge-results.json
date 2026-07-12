@@ -1643,5 +1643,327 @@
       "overall": "The code meets most of the functional requirements and follows RTK Query best practices. However, there are some areas for improvement to enhance maintainability and error handling.",
       "requirementCompliance": 92
     }
+  },
+  {
+    "challengeId": "06-rtk-query-setup",
+    "challengeName": "RTK Query Setup and API Slice",
+    "timestamp": "2026-07-12T02:03:39.554Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 90,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 86
+    },
+    "totalScore": 96.4,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 06: RTK Query Setup"
+              ],
+              "fullName": " Challenge 06: RTK Query Setup apiSlice uses createApi",
+              "status": "passed",
+              "title": "apiSlice uses createApi",
+              "duration": 1,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 06: RTK Query Setup"
+              ],
+              "fullName": " Challenge 06: RTK Query Setup apiSlice has baseQuery or fetchBaseQuery",
+              "status": "passed",
+              "title": "apiSlice has baseQuery or fetchBaseQuery",
+              "duration": 1,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 06: RTK Query Setup"
+              ],
+              "fullName": " Challenge 06: RTK Query Setup store includes API reducer and middleware",
+              "status": "passed",
+              "title": "store includes API reducer and middleware",
+              "duration": 0,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1783821822247,
+          "endTime": 1783821822249,
+          "status": "passed",
+          "message": "",
+          "name": "D:/React-Frontend/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-06.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 90,
+      "passed": false,
+      "totalIssues": 1,
+      "errors": 1,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\api\\apiSlice.ts",
+          "messages": [
+            {
+              "ruleId": "@typescript-eslint/no-explicit-any",
+              "severity": 2,
+              "message": "Unexpected any. Specify a different type.",
+              "line": 21,
+              "column": 25,
+              "nodeType": "TSAnyKeyword",
+              "messageId": "unexpectedAny",
+              "endLine": 21,
+              "endColumn": 28,
+              "suggestions": [
+                {
+                  "messageId": "suggestUnknown",
+                  "fix": {
+                    "range": [
+                      658,
+                      661
+                    ],
+                    "text": "unknown"
+                  },
+                  "desc": "Use `unknown` instead, this will force you to explicitly, and safely assert the type is correct."
+                },
+                {
+                  "messageId": "suggestNever",
+                  "fix": {
+                    "range": [
+                      658,
+                      661
+                    ],
+                    "text": "never"
+                  },
+                  "desc": "Use `never` instead, this is useful when instantiating generic type parameters that you don't need to know the type of."
+                }
+              ]
+            }
+          ],
+          "suppressedMessages": [],
+          "errorCount": 1,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "source": "import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';\r\nimport { mockApi } from './mockServer';\r\n\r\n// Define the User type structure\r\ninterface User {\r\n  id: string;\r\n  name: string;\r\n  email: string;\r\n}\r\n\r\nexport const apiSlice = createApi({\r\n  reducerPath: 'api',\r\n  // fetchBaseQuery is required by the check criteria, but we can bypass network calls using queryFn\r\n  baseQuery: fetchBaseQuery({ baseUrl: '/' }),\r\n  endpoints: (builder) => ({\r\n    getUsers: builder.query<User[], void>({\r\n      queryFn: async () => {\r\n        try {\r\n          const data = await mockApi.getUsers();\r\n          return { data };\r\n        } catch (error: any) {\r\n          return { error: { status: 'CUSTOM_ERROR', error: error.message } };\r\n        }\r\n      },\r\n    }),\r\n  }),\r\n});\r\n\r\nexport const { useGetUsersQuery } = apiSlice;",
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\store\\store.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "reducer",
+        "middleware"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/store/store.ts",
+          "patternsFound": [
+            "reducer",
+            "middleware"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/api/apiSlice.ts",
+          "patternsFound": [],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-06.spec.ts",
+          "file": "challenge-06.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 06: RTK Query Setup - E2E",
+              "file": "challenge-06.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should load challenge 06 page",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 344,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-12T02:03:50.852Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "fdfd0a4bbce1fa4a4eed-d3b758c659b53a3389b9",
+                  "file": "challenge-06.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should have challenge content",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 208,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-12T02:03:51.405Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "fdfd0a4bbce1fa4a4eed-da9ec0276072769975b0",
+                  "file": "challenge-06.spec.ts",
+                  "line": 13,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "06-rtk-query-setup",
+      "timestamp": "2026-07-12T02:03:52.018Z",
+      "score": 86,
+      "feedback": [],
+      "strengths": [
+        "Proper use of createApi and fetchBaseQuery",
+        "Correct integration of API slice with store",
+        "Well-structured code with clear separation of concerns"
+      ],
+      "improvements": [
+        "In `src/api/apiSlice.ts`, consider using a more robust error handling mechanism instead of returning a custom error object (e.g., using `createApi`'s built-in error handling).",
+        "In `src/store/store.ts`, consider adding a check for the `apiSlice.reducerPath` to ensure it's not already present in the reducer object.",
+        "In `src/api/mockServer.ts`, the `delay` function is not necessary; consider removing it for simplicity.",
+        "In `src/api/apiSlice.ts`, the `User` interface is not used consistently; consider updating the `getUsers` query to return an array of `User` objects instead of an object with a `data` property."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code meets most requirements and demonstrates a good understanding of RTK Query. However, there are some areas for improvement, particularly in error handling and code organization.",
+      "requirementCompliance": 90
+    },
+    "aiResults": {
+      "challengeId": "06-rtk-query-setup",
+      "timestamp": "2026-07-12T02:03:52.018Z",
+      "score": 86,
+      "feedback": [],
+      "strengths": [
+        "Proper use of createApi and fetchBaseQuery",
+        "Correct integration of API slice with store",
+        "Well-structured code with clear separation of concerns"
+      ],
+      "improvements": [
+        "In `src/api/apiSlice.ts`, consider using a more robust error handling mechanism instead of returning a custom error object (e.g., using `createApi`'s built-in error handling).",
+        "In `src/store/store.ts`, consider adding a check for the `apiSlice.reducerPath` to ensure it's not already present in the reducer object.",
+        "In `src/api/mockServer.ts`, the `delay` function is not necessary; consider removing it for simplicity.",
+        "In `src/api/apiSlice.ts`, the `User` interface is not used consistently; consider updating the `getUsers` query to return an array of `User` objects instead of an object with a `data` property."
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code meets most requirements and demonstrates a good understanding of RTK Query. However, there are some areas for improvement, particularly in error handling and code organization.",
+      "requirementCompliance": 90
+    }
   }
 ]
