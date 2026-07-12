@@ -12,12 +12,18 @@ export interface NewUser {
   email: string;
 }
 
+export interface Post {
+  id: number;
+  userId: string;
+  title: string;
+}
+
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: '/',
   }),
-  tagTypes: ['User'],
+  tagTypes: ['User', 'Post'],
   endpoints: (builder) => ({
     getUsers: builder.query<User[], void>({
       queryFn: async () => {
@@ -85,7 +91,40 @@ export const apiSlice = createApi({
         }
       },
     }),
+
+    getPosts: builder.query<Post[], void>({
+      queryFn: async () => {
+        try {
+          const users = await mockApi.getUsers();
+          // Derived mock posts, one per user, so this works without a
+          // separate posts endpoint in mockServer.
+          const posts: Post[] = users.map((u, idx) => ({
+            id: idx + 1,
+            userId: u.id,
+            title: `${u.name}'s first post`,
+          }));
+          return { data: posts };
+        } catch (error: unknown) {
+          return {
+            error: {
+              status: 'CUSTOM_ERROR',
+              error:
+                error instanceof Error
+                  ? error.message
+                  : 'Failed to fetch posts',
+            },
+          };
+        }
+      },
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: 'Post' as const, id })),
+              { type: 'Post', id: 'LIST' },
+            ]
+          : [{ type: 'Post', id: 'LIST' }],
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useAddUserMutation } = apiSlice;
+export const { useGetUsersQuery, useAddUserMutation, useGetPostsQuery } = apiSlice;

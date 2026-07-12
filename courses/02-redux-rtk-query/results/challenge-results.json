@@ -3256,5 +3256,324 @@
       "overall": "The code meets most functional requirements and demonstrates good understanding of RTK Query best practices. However, there are some minor improvements that can be made to enhance maintainability and readability.",
       "requirementCompliance": 90
     }
+  },
+  {
+    "challengeId": "11-api-local-state",
+    "challengeName": "API and Local State Together",
+    "timestamp": "2026-07-12T18:47:19.126Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 75,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 86
+    },
+    "totalScore": 95.4,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 11: API and Local State Together"
+              ],
+              "fullName": " Challenge 11: API and Local State Together filtersSlice exists and is in store",
+              "status": "passed",
+              "title": "filtersSlice exists and is in store",
+              "duration": 2,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 11: API and Local State Together"
+              ],
+              "fullName": " Challenge 11: API and Local State Together PostsWithFilters uses useSelector and useGetPostsQuery or query hook",
+              "status": "passed",
+              "title": "PostsWithFilters uses useSelector and useGetPostsQuery or query hook",
+              "duration": 0,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 11: API and Local State Together"
+              ],
+              "fullName": " Challenge 11: API and Local State Together PostsWithFilters has posts-with-filters and filter-controls data-testids",
+              "status": "passed",
+              "title": "PostsWithFilters has posts-with-filters and filter-controls data-testids",
+              "duration": 1,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1783882042899,
+          "endTime": 1783882042902,
+          "status": "passed",
+          "message": "",
+          "name": "D:/React-Frontend/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-11.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\components\\PostsWithFilters.tsx",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\store\\slices\\filtersSlice.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\store\\store.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 75,
+      "passed": false,
+      "patternsFound": [
+        "reducer",
+        "middleware",
+        "reducer"
+      ],
+      "patternsMissing": [
+        "middleware"
+      ],
+      "details": [
+        {
+          "file": "src/store/store.ts",
+          "patternsFound": [
+            "reducer",
+            "middleware"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/store/slices/filtersSlice.ts",
+          "patternsFound": [
+            "reducer"
+          ],
+          "patternsMissing": [
+            "middleware"
+          ]
+        },
+        {
+          "file": "src/components/PostsWithFilters.tsx",
+          "patternsFound": [],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-11.spec.ts",
+          "file": "challenge-11.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 11: API and Local State - E2E",
+              "file": "challenge-11.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should load challenge 11 page with PostsWithFilters",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 542,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-12T18:47:34.291Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1017095ef2170c8a8deb-fae6402d7bdc74a17551",
+                  "file": "challenge-11.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should have filter controls",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 284,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-12T18:47:35.115Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "1017095ef2170c8a8deb-8d519fcb89ba7307e5f5",
+                  "file": "challenge-11.spec.ts",
+                  "line": 13,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "11-api-local-state",
+      "timestamp": "2026-07-12T18:47:36.120Z",
+      "score": 86,
+      "feedback": [],
+      "strengths": [
+        "The code uses RTK Query correctly and integrates it with Redux Toolkit.",
+        "The code is well-organized, with each file having a clear purpose.",
+        "The use of TypeScript is good, with proper types and interfaces."
+      ],
+      "improvements": [
+        "Rename `PostsWithFilters` function",
+        "Break down long functions",
+        "Use more descriptive variable names",
+        "Consider using a more robust sorting algorithm",
+        "Add more error handling"
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code meets most of the requirements and uses RTK Query correctly. However, there are some areas that could be improved for better maintainability and readability.",
+      "requirementCompliance": 90
+    },
+    "aiResults": {
+      "challengeId": "11-api-local-state",
+      "timestamp": "2026-07-12T18:47:36.120Z",
+      "score": 86,
+      "feedback": [],
+      "strengths": [
+        "The code uses RTK Query correctly and integrates it with Redux Toolkit.",
+        "The code is well-organized, with each file having a clear purpose.",
+        "The use of TypeScript is good, with proper types and interfaces."
+      ],
+      "improvements": [
+        "Rename `PostsWithFilters` function",
+        "Break down long functions",
+        "Use more descriptive variable names",
+        "Consider using a more robust sorting algorithm",
+        "Add more error handling"
+      ],
+      "readability": 85,
+      "maintainability": 80,
+      "overall": "The code meets most of the requirements and uses RTK Query correctly. However, there are some areas that could be improved for better maintainability and readability.",
+      "requirementCompliance": 90
+    }
   }
 ]
