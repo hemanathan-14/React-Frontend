@@ -1355,5 +1355,293 @@
       "overall": "The code meets most requirements and demonstrates good RTK Query practices. However, there are some minor improvements that can be made to enhance maintainability and readability.",
       "requirementCompliance": 92
     }
+  },
+  {
+    "challengeId": "05-async-thunks",
+    "challengeName": "Async Logic with createAsyncThunk",
+    "timestamp": "2026-07-12T01:57:23.393Z",
+    "scores": {
+      "functionalTests": 100,
+      "codeQuality": 100,
+      "architecture": 100,
+      "bestPractices": 100,
+      "e2eTests": 100,
+      "aiReview": 89
+    },
+    "totalScore": 98.35,
+    "passed": true,
+    "errors": [],
+    "warnings": [],
+    "testResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 3,
+      "passedTests": 3,
+      "failedTests": 0,
+      "details": [
+        {
+          "assertionResults": [
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Async Logic with createAsyncThunk"
+              ],
+              "fullName": " Challenge 05: Async Logic with createAsyncThunk usersSlice uses createAsyncThunk",
+              "status": "passed",
+              "title": "usersSlice uses createAsyncThunk",
+              "duration": 2,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Async Logic with createAsyncThunk"
+              ],
+              "fullName": " Challenge 05: Async Logic with createAsyncThunk usersSlice uses extraReducers",
+              "status": "passed",
+              "title": "usersSlice uses extraReducers",
+              "duration": 0,
+              "failureMessages": []
+            },
+            {
+              "ancestorTitles": [
+                "",
+                "Challenge 05: Async Logic with createAsyncThunk"
+              ],
+              "fullName": " Challenge 05: Async Logic with createAsyncThunk store includes users reducer",
+              "status": "passed",
+              "title": "store includes users reducer",
+              "duration": 0,
+              "failureMessages": []
+            }
+          ],
+          "startTime": 1783821449558,
+          "endTime": 1783821449560,
+          "status": "passed",
+          "message": "",
+          "name": "D:/React-Frontend/challenge-engine-react/courses/02-redux-rtk-query/project/tests/challenge-05.test.tsx"
+        }
+      ]
+    },
+    "lintResults": {
+      "score": 100,
+      "passed": true,
+      "totalIssues": 0,
+      "errors": 0,
+      "warnings": 0,
+      "details": [
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\store\\slices\\usersSlice.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        },
+        {
+          "filePath": "D:\\React-Frontend\\challenge-engine-react\\courses\\02-redux-rtk-query\\project\\src\\store\\store.ts",
+          "messages": [],
+          "suppressedMessages": [],
+          "errorCount": 0,
+          "fatalErrorCount": 0,
+          "warningCount": 0,
+          "fixableErrorCount": 0,
+          "fixableWarningCount": 0,
+          "usedDeprecatedRules": [
+            {
+              "ruleId": "no-extra-semi",
+              "replacedBy": []
+            },
+            {
+              "ruleId": "no-mixed-spaces-and-tabs",
+              "replacedBy": []
+            }
+          ]
+        }
+      ]
+    },
+    "architectureResults": {
+      "score": 100,
+      "passed": true,
+      "patternsFound": [
+        "reducer",
+        "middleware",
+        "reducer",
+        "middleware"
+      ],
+      "patternsMissing": [],
+      "details": [
+        {
+          "file": "src/store/slices/usersSlice.ts",
+          "patternsFound": [
+            "reducer",
+            "middleware"
+          ],
+          "patternsMissing": []
+        },
+        {
+          "file": "src/store/store.ts",
+          "patternsFound": [
+            "reducer",
+            "middleware"
+          ],
+          "patternsMissing": []
+        }
+      ]
+    },
+    "bestPracticesResults": {
+      "score": 100,
+      "passed": true,
+      "issues": [],
+      "details": [],
+      "note": "No best practices requirements specified in challenge"
+    },
+    "e2eResults": {
+      "score": 100,
+      "passed": true,
+      "totalTests": 2,
+      "passedTests": 2,
+      "failedTests": 0,
+      "details": [
+        {
+          "title": "challenge-05.spec.ts",
+          "file": "challenge-05.spec.ts",
+          "column": 0,
+          "line": 0,
+          "specs": [],
+          "suites": [
+            {
+              "title": "Challenge 05: Async Thunks - E2E",
+              "file": "challenge-05.spec.ts",
+              "line": 3,
+              "column": 6,
+              "specs": [
+                {
+                  "title": "should load challenge 05 page",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 395,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-12T01:57:40.926Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "ec25b63e8ac6a5e53e87-a0356a2890abe11abcb0",
+                  "file": "challenge-05.spec.ts",
+                  "line": 8,
+                  "column": 3
+                },
+                {
+                  "title": "should have challenge content",
+                  "ok": true,
+                  "tags": [],
+                  "tests": [
+                    {
+                      "timeout": 30000,
+                      "annotations": [],
+                      "expectedStatus": "passed",
+                      "projectId": "chromium",
+                      "projectName": "chromium",
+                      "results": [
+                        {
+                          "workerIndex": 0,
+                          "parallelIndex": 0,
+                          "status": "passed",
+                          "duration": 213,
+                          "errors": [],
+                          "stdout": [],
+                          "stderr": [],
+                          "retry": 0,
+                          "startTime": "2026-07-12T01:57:42.908Z",
+                          "annotations": [],
+                          "attachments": []
+                        }
+                      ],
+                      "status": "expected"
+                    }
+                  ],
+                  "id": "ec25b63e8ac6a5e53e87-35d9e52e621ddedf3eac",
+                  "file": "challenge-05.spec.ts",
+                  "line": 13,
+                  "column": 3
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "screenshots": []
+    },
+    "aiReviewResults": {
+      "challengeId": "05-async-thunks",
+      "timestamp": "2026-07-12T01:57:43.531Z",
+      "score": 89,
+      "feedback": [],
+      "strengths": [
+        "Proper use of createAsyncThunk and extraReducers for handling pending, fulfilled, and rejected states.",
+        "Correct TypeScript usage with proper types and interfaces.",
+        "Logical structure and separation of concerns in the code organization."
+      ],
+      "improvements": [
+        "In the usersSlice.ts file, consider adding a check for the response data before setting it as the list in the fulfilled state. This can prevent potential errors if the response data is not in the expected format. (src/store/slices/usersSlice.ts)",
+        "In the usersSlice.ts file, the error message in the rejected state can be improved to provide more context. Consider including the actual error message or the status code of the response. (src/store/slices/usersSlice.ts)",
+        "In the store.ts file, consider adding a check for the reducer names to ensure they exist before adding them to the store. This can prevent potential errors if the reducer names are not correct. (src/store/store.ts)"
+      ],
+      "readability": 90,
+      "maintainability": 85,
+      "overall": "The code meets most of the functional requirements and follows RTK Query best practices. However, there are some areas for improvement to enhance maintainability and error handling.",
+      "requirementCompliance": 92
+    },
+    "aiResults": {
+      "challengeId": "05-async-thunks",
+      "timestamp": "2026-07-12T01:57:43.531Z",
+      "score": 89,
+      "feedback": [],
+      "strengths": [
+        "Proper use of createAsyncThunk and extraReducers for handling pending, fulfilled, and rejected states.",
+        "Correct TypeScript usage with proper types and interfaces.",
+        "Logical structure and separation of concerns in the code organization."
+      ],
+      "improvements": [
+        "In the usersSlice.ts file, consider adding a check for the response data before setting it as the list in the fulfilled state. This can prevent potential errors if the response data is not in the expected format. (src/store/slices/usersSlice.ts)",
+        "In the usersSlice.ts file, the error message in the rejected state can be improved to provide more context. Consider including the actual error message or the status code of the response. (src/store/slices/usersSlice.ts)",
+        "In the store.ts file, consider adding a check for the reducer names to ensure they exist before adding them to the store. This can prevent potential errors if the reducer names are not correct. (src/store/store.ts)"
+      ],
+      "readability": 90,
+      "maintainability": 85,
+      "overall": "The code meets most of the functional requirements and follows RTK Query best practices. However, there are some areas for improvement to enhance maintainability and error handling.",
+      "requirementCompliance": 92
+    }
   }
 ]

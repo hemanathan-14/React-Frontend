@@ -35,7 +35,7 @@ Pass threshold: weighted score ≥ 80%.
 - TypeScript; pass ESLint; no console statements.
 
 ---
-
+npm run review -- --challenge=05-async-thunks
 ## Verify and submit
 
-Run `npm run review -- --challenge=05-async-thunks` to get scored.
+Run `` to get scored.
