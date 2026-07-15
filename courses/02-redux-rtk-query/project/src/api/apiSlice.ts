@@ -16,6 +16,7 @@ export interface Post {
   id: number;
   userId: string;
   title: string;
+  body?: string;
 }
 
 export const apiSlice = createApi({
@@ -73,8 +74,6 @@ export const apiSlice = createApi({
       },
       invalidatesTags: [{ type: 'User', id: 'LIST' }],
 
-      // Optimistic update: patch the getUsers cache immediately,
-      // roll back if the mutation fails.
       async onQueryStarted(newUser, { dispatch, queryFulfilled }) {
         const tempId = `temp-${Date.now()}`;
 
@@ -96,12 +95,11 @@ export const apiSlice = createApi({
       queryFn: async () => {
         try {
           const users = await mockApi.getUsers();
-          // Derived mock posts, one per user, so this works without a
-          // separate posts endpoint in mockServer.
           const posts: Post[] = users.map((u, idx) => ({
             id: idx + 1,
             userId: u.id,
             title: `${u.name}'s first post`,
+            body: `This is a sample post written by ${u.name}.`,
           }));
           return { data: posts };
         } catch (error: unknown) {
@@ -124,7 +122,44 @@ export const apiSlice = createApi({
             ]
           : [{ type: 'Post', id: 'LIST' }],
     }),
+
+    getPostById: builder.query<Post, number>({
+      queryFn: async (id) => {
+        try {
+          const users = await mockApi.getUsers();
+          const posts: Post[] = users.map((u, idx) => ({
+            id: idx + 1,
+            userId: u.id,
+            title: `${u.name}'s first post`,
+            body: `This is a sample post written by ${u.name}.`,
+          }));
+          const post = posts.find((p) => p.id === id);
+          if (!post) {
+            return {
+              error: { status: 'CUSTOM_ERROR', error: `Post ${id} not found` },
+            };
+          }
+          return { data: post };
+        } catch (error: unknown) {
+          return {
+            error: {
+              status: 'CUSTOM_ERROR',
+              error:
+                error instanceof Error
+                  ? error.message
+                  : 'Failed to fetch post',
+            },
+          };
+        }
+      },
+      providesTags: (result, error, id) => [{ type: 'Post', id }],
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useAddUserMutation, useGetPostsQuery } = apiSlice;
+export const {
+  useGetUsersQuery,
+  useAddUserMutation,
+  useGetPostsQuery,
+  useGetPostByIdQuery,
+} = apiSlice;
